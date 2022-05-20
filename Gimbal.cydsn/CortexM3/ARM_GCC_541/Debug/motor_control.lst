@@ -1,0 +1,1479 @@
+ARM GAS  C:\Users\ibrah\AppData\Local\Temp\ccmUVnXM.s 			page 1
+
+
+   1              		.syntax unified
+   2              		.cpu cortex-m3
+   3              		.fpu softvfp
+   4              		.eabi_attribute 20, 1
+   5              		.eabi_attribute 21, 1
+   6              		.eabi_attribute 23, 3
+   7              		.eabi_attribute 24, 1
+   8              		.eabi_attribute 25, 1
+   9              		.eabi_attribute 26, 1
+  10              		.eabi_attribute 30, 1
+  11              		.eabi_attribute 34, 1
+  12              		.eabi_attribute 18, 4
+  13              		.thumb
+  14              		.syntax unified
+  15              		.file	"motor_control.c"
+  16              		.text
+  17              	.Ltext0:
+  18              		.cfi_sections	.debug_frame
+  19              		.section	.text.MoveServosToStart,"ax",%progbits
+  20              		.align	2
+  21              		.global	MoveServosToStart
+  22              		.thumb
+  23              		.thumb_func
+  24              		.type	MoveServosToStart, %function
+  25              	MoveServosToStart:
+  26              	.LFB63:
+  27              		.file 1 "motor_control.c"
+   1:motor_control.c **** #include <project.h>
+   2:motor_control.c **** 
+   3:motor_control.c **** #include "motor_control.h"
+   4:motor_control.c **** 
+   5:motor_control.c **** 
+   6:motor_control.c **** 
+   7:motor_control.c **** int potentio_cmd = 0;
+   8:motor_control.c **** int servo_cmd_1 = 0;
+   9:motor_control.c **** int servo_cmd_2 = 0;
+  10:motor_control.c **** 
+  11:motor_control.c **** 
+  12:motor_control.c **** 
+  13:motor_control.c **** 
+  14:motor_control.c **** void MoveServosToStart()
+  15:motor_control.c **** {
+  28              		.loc 1 15 0
+  29              		.cfi_startproc
+  30              		@ args = 0, pretend = 0, frame = 0
+  31              		@ frame_needed = 0, uses_anonymous_args = 0
+  32 0000 08B5     		push	{r3, lr}
+  33              		.cfi_def_cfa_offset 8
+  34              		.cfi_offset 3, -8
+  35              		.cfi_offset 14, -4
+  16:motor_control.c ****     PWM_WriteCompare1(3800);
+  36              		.loc 1 16 0
+  37 0002 40F6D860 		movw	r0, #3800
+  38 0006 FFF7FEFF 		bl	PWM_WriteCompare1
+  39              	.LVL0:
+  17:motor_control.c ****     PWM_WriteCompare2(2025);
+  40              		.loc 1 17 0
+ARM GAS  C:\Users\ibrah\AppData\Local\Temp\ccmUVnXM.s 			page 2
+
+
+  41 000a 40F2E970 		movw	r0, #2025
+  42 000e FFF7FEFF 		bl	PWM_WriteCompare2
+  43              	.LVL1:
+  44 0012 08BD     		pop	{r3, pc}
+  45              		.cfi_endproc
+  46              	.LFE63:
+  47              		.size	MoveServosToStart, .-MoveServosToStart
+  48              		.section	.text.InitializeServos,"ax",%progbits
+  49              		.align	2
+  50              		.global	InitializeServos
+  51              		.thumb
+  52              		.thumb_func
+  53              		.type	InitializeServos, %function
+  54              	InitializeServos:
+  55              	.LFB64:
+  18:motor_control.c ****     
+  19:motor_control.c **** }
+  20:motor_control.c **** 
+  21:motor_control.c **** 
+  22:motor_control.c **** void InitializeServos()
+  23:motor_control.c **** {
+  56              		.loc 1 23 0
+  57              		.cfi_startproc
+  58              		@ args = 0, pretend = 0, frame = 0
+  59              		@ frame_needed = 0, uses_anonymous_args = 0
+  60 0000 08B5     		push	{r3, lr}
+  61              		.cfi_def_cfa_offset 8
+  62              		.cfi_offset 3, -8
+  63              		.cfi_offset 14, -4
+  24:motor_control.c ****     
+  25:motor_control.c ****     PWM_Start();
+  64              		.loc 1 25 0
+  65 0002 FFF7FEFF 		bl	PWM_Start
+  66              	.LVL2:
+  26:motor_control.c ****     MoveServosToStart();
+  67              		.loc 1 26 0
+  68 0006 FFF7FEFF 		bl	MoveServosToStart
+  69              	.LVL3:
+  70 000a 08BD     		pop	{r3, pc}
+  71              		.cfi_endproc
+  72              	.LFE64:
+  73              		.size	InitializeServos, .-InitializeServos
+  74              		.section	.text.Joystick_Start,"ax",%progbits
+  75              		.align	2
+  76              		.global	Joystick_Start
+  77              		.thumb
+  78              		.thumb_func
+  79              		.type	Joystick_Start, %function
+  80              	Joystick_Start:
+  81              	.LFB65:
+  27:motor_control.c **** 
+  28:motor_control.c ****     
+  29:motor_control.c **** }
+  30:motor_control.c **** 
+  31:motor_control.c **** 
+  32:motor_control.c **** 
+  33:motor_control.c **** 
+ARM GAS  C:\Users\ibrah\AppData\Local\Temp\ccmUVnXM.s 			page 3
+
+
+  34:motor_control.c **** void Joystick_Start()
+  35:motor_control.c **** {
+  82              		.loc 1 35 0
+  83              		.cfi_startproc
+  84              		@ args = 0, pretend = 0, frame = 0
+  85              		@ frame_needed = 0, uses_anonymous_args = 0
+  86 0000 08B5     		push	{r3, lr}
+  87              		.cfi_def_cfa_offset 8
+  88              		.cfi_offset 3, -8
+  89              		.cfi_offset 14, -4
+  36:motor_control.c ****     
+  37:motor_control.c ****     ADC_Start();
+  90              		.loc 1 37 0
+  91 0002 FFF7FEFF 		bl	ADC_Start
+  92              	.LVL4:
+  38:motor_control.c ****     ADC_StartConvert();
+  93              		.loc 1 38 0
+  94 0006 FFF7FEFF 		bl	ADC_StartConvert
+  95              	.LVL5:
+  39:motor_control.c ****     AMux_Start();
+  96              		.loc 1 39 0
+  97 000a FFF7FEFF 		bl	AMux_Start
+  98              	.LVL6:
+  99 000e 08BD     		pop	{r3, pc}
+ 100              		.cfi_endproc
+ 101              	.LFE65:
+ 102              		.size	Joystick_Start, .-Joystick_Start
+ 103              		.global	__aeabi_f2d
+ 104              		.global	__aeabi_ddiv
+ 105              		.global	__aeabi_dsub
+ 106              		.global	__aeabi_d2iz
+ 107              		.section	.text.MPU6050_MoveServo1,"ax",%progbits
+ 108              		.align	2
+ 109              		.global	MPU6050_MoveServo1
+ 110              		.thumb
+ 111              		.thumb_func
+ 112              		.type	MPU6050_MoveServo1, %function
+ 113              	MPU6050_MoveServo1:
+ 114              	.LFB66:
+  40:motor_control.c ****     
+  41:motor_control.c **** }
+  42:motor_control.c ****     
+  43:motor_control.c **** 
+  44:motor_control.c **** void MPU6050_MoveServo1(float* roll)
+  45:motor_control.c **** {
+ 115              		.loc 1 45 0
+ 116              		.cfi_startproc
+ 117              		@ args = 0, pretend = 0, frame = 0
+ 118              		@ frame_needed = 0, uses_anonymous_args = 0
+ 119              	.LVL7:
+ 120 0000 08B5     		push	{r3, lr}
+ 121              		.cfi_def_cfa_offset 8
+ 122              		.cfi_offset 3, -8
+ 123              		.cfi_offset 14, -4
+  46:motor_control.c ****         servo_cmd_1 = 3800 - *roll / 0.0375;
+ 124              		.loc 1 46 0
+ 125 0002 0068     		ldr	r0, [r0]	@ float
+ARM GAS  C:\Users\ibrah\AppData\Local\Temp\ccmUVnXM.s 			page 4
+
+
+ 126              	.LVL8:
+ 127 0004 FFF7FEFF 		bl	__aeabi_f2d
+ 128              	.LVL9:
+ 129 0008 11A3     		adr	r3, .L11
+ 130 000a D3E90023 		ldrd	r2, [r3]
+ 131 000e FFF7FEFF 		bl	__aeabi_ddiv
+ 132              	.LVL10:
+ 133 0012 0246     		mov	r2, r0
+ 134 0014 0B46     		mov	r3, r1
+ 135 0016 10A1     		adr	r1, .L11+8
+ 136 0018 D1E90001 		ldrd	r0, [r1]
+ 137 001c FFF7FEFF 		bl	__aeabi_dsub
+ 138              	.LVL11:
+ 139 0020 FFF7FEFF 		bl	__aeabi_d2iz
+ 140              	.LVL12:
+ 141 0024 0E4B     		ldr	r3, .L11+16
+ 142 0026 1860     		str	r0, [r3]
+  47:motor_control.c ****             
+  48:motor_control.c ****         if (servo_cmd_1 > 6000)
+ 143              		.loc 1 48 0
+ 144 0028 41F27073 		movw	r3, #6000
+ 145 002c 9842     		cmp	r0, r3
+ 146 002e 03DD     		ble	.L8
+  49:motor_control.c ****         {
+  50:motor_control.c ****          servo_cmd_1 = 6000;   
+ 147              		.loc 1 50 0
+ 148 0030 1A46     		mov	r2, r3
+ 149 0032 0B4B     		ldr	r3, .L11+16
+ 150 0034 1A60     		str	r2, [r3]
+ 151 0036 06E0     		b	.L9
+ 152              	.L8:
+  51:motor_control.c ****         }
+  52:motor_control.c ****         else if (servo_cmd_1 < 1200)
+ 153              		.loc 1 52 0
+ 154 0038 B0F5966F 		cmp	r0, #1200
+ 155 003c 03DA     		bge	.L9
+  53:motor_control.c ****         {
+  54:motor_control.c ****             servo_cmd_1 = 1200;
+ 156              		.loc 1 54 0
+ 157 003e 4FF49662 		mov	r2, #1200
+ 158 0042 074B     		ldr	r3, .L11+16
+ 159 0044 1A60     		str	r2, [r3]
+ 160              	.L9:
+  55:motor_control.c ****         }
+  56:motor_control.c ****         PWM_WriteCompare1(servo_cmd_1);
+ 161              		.loc 1 56 0
+ 162 0046 064B     		ldr	r3, .L11+16
+ 163 0048 1888     		ldrh	r0, [r3]
+ 164 004a FFF7FEFF 		bl	PWM_WriteCompare1
+ 165              	.LVL13:
+ 166 004e 08BD     		pop	{r3, pc}
+ 167              	.L12:
+ 168              		.align	3
+ 169              	.L11:
+ 170 0050 33333333 		.word	858993459
+ 171 0054 3333A33F 		.word	1067660083
+ 172 0058 00000000 		.word	0
+ARM GAS  C:\Users\ibrah\AppData\Local\Temp\ccmUVnXM.s 			page 5
+
+
+ 173 005c 00B0AD40 		.word	1085124608
+ 174 0060 00000000 		.word	.LANCHOR0
+ 175              		.cfi_endproc
+ 176              	.LFE66:
+ 177              		.size	MPU6050_MoveServo1, .-MPU6050_MoveServo1
+ 178              		.section	.text.MPU6050_MoveServo2,"ax",%progbits
+ 179              		.align	2
+ 180              		.global	MPU6050_MoveServo2
+ 181              		.thumb
+ 182              		.thumb_func
+ 183              		.type	MPU6050_MoveServo2, %function
+ 184              	MPU6050_MoveServo2:
+ 185              	.LFB67:
+  57:motor_control.c ****         
+  58:motor_control.c ****         
+  59:motor_control.c ****         /*sprintf(detect, "1 -- POT:: %d -- SERVO1 %d\n", cmd, servo_cmd_1);
+  60:motor_control.c ****         UART_PutString(detect);*/ 
+  61:motor_control.c **** }
+  62:motor_control.c **** 
+  63:motor_control.c **** 
+  64:motor_control.c **** 
+  65:motor_control.c **** 
+  66:motor_control.c **** void MPU6050_MoveServo2(float* pitch)
+  67:motor_control.c **** {
+ 186              		.loc 1 67 0
+ 187              		.cfi_startproc
+ 188              		@ args = 0, pretend = 0, frame = 0
+ 189              		@ frame_needed = 0, uses_anonymous_args = 0
+ 190              	.LVL14:
+ 191 0000 08B5     		push	{r3, lr}
+ 192              		.cfi_def_cfa_offset 8
+ 193              		.cfi_offset 3, -8
+ 194              		.cfi_offset 14, -4
+  68:motor_control.c **** 
+  69:motor_control.c ****         servo_cmd_2 = 2025 - *pitch / 0.0375;
+ 195              		.loc 1 69 0
+ 196 0002 0068     		ldr	r0, [r0]	@ float
+ 197              	.LVL15:
+ 198 0004 FFF7FEFF 		bl	__aeabi_f2d
+ 199              	.LVL16:
+ 200 0008 11A3     		adr	r3, .L17
+ 201 000a D3E90023 		ldrd	r2, [r3]
+ 202 000e FFF7FEFF 		bl	__aeabi_ddiv
+ 203              	.LVL17:
+ 204 0012 0246     		mov	r2, r0
+ 205 0014 0B46     		mov	r3, r1
+ 206 0016 10A1     		adr	r1, .L17+8
+ 207 0018 D1E90001 		ldrd	r0, [r1]
+ 208 001c FFF7FEFF 		bl	__aeabi_dsub
+ 209              	.LVL18:
+ 210 0020 FFF7FEFF 		bl	__aeabi_d2iz
+ 211              	.LVL19:
+ 212 0024 0E4B     		ldr	r3, .L17+16
+ 213 0026 5860     		str	r0, [r3, #4]
+  70:motor_control.c ****         
+  71:motor_control.c ****         if (servo_cmd_2 > 2850)
+ 214              		.loc 1 71 0
+ARM GAS  C:\Users\ibrah\AppData\Local\Temp\ccmUVnXM.s 			page 6
+
+
+ 215 0028 40F62233 		movw	r3, #2850
+ 216 002c 9842     		cmp	r0, r3
+ 217 002e 03DD     		ble	.L14
+  72:motor_control.c ****         {
+  73:motor_control.c ****          servo_cmd_2 = 2850;   
+ 218              		.loc 1 73 0
+ 219 0030 1A46     		mov	r2, r3
+ 220 0032 0B4B     		ldr	r3, .L17+16
+ 221 0034 5A60     		str	r2, [r3, #4]
+ 222 0036 06E0     		b	.L15
+ 223              	.L14:
+  74:motor_control.c ****         }
+  75:motor_control.c ****         else if (servo_cmd_2 < 1200)
+ 224              		.loc 1 75 0
+ 225 0038 B0F5966F 		cmp	r0, #1200
+ 226 003c 03DA     		bge	.L15
+  76:motor_control.c ****         {
+  77:motor_control.c ****             servo_cmd_2 = 1200;
+ 227              		.loc 1 77 0
+ 228 003e 4FF49662 		mov	r2, #1200
+ 229 0042 074B     		ldr	r3, .L17+16
+ 230 0044 5A60     		str	r2, [r3, #4]
+ 231              	.L15:
+  78:motor_control.c ****         }
+  79:motor_control.c ****         
+  80:motor_control.c ****         PWM_WriteCompare2(servo_cmd_2);
+ 232              		.loc 1 80 0
+ 233 0046 064B     		ldr	r3, .L17+16
+ 234 0048 9888     		ldrh	r0, [r3, #4]
+ 235 004a FFF7FEFF 		bl	PWM_WriteCompare2
+ 236              	.LVL20:
+ 237 004e 08BD     		pop	{r3, pc}
+ 238              	.L18:
+ 239              		.align	3
+ 240              	.L17:
+ 241 0050 33333333 		.word	858993459
+ 242 0054 3333A33F 		.word	1067660083
+ 243 0058 00000000 		.word	0
+ 244 005c 00A49F40 		.word	1084204032
+ 245 0060 00000000 		.word	.LANCHOR0
+ 246              		.cfi_endproc
+ 247              	.LFE67:
+ 248              		.size	MPU6050_MoveServo2, .-MPU6050_MoveServo2
+ 249              		.global	__aeabi_i2d
+ 250              		.global	__aeabi_dmul
+ 251              		.global	__aeabi_dadd
+ 252              		.section	.text.Joystick_MoveServo1,"ax",%progbits
+ 253              		.align	2
+ 254              		.global	Joystick_MoveServo1
+ 255              		.thumb
+ 256              		.thumb_func
+ 257              		.type	Joystick_MoveServo1, %function
+ 258              	Joystick_MoveServo1:
+ 259              	.LFB68:
+  81:motor_control.c ****     
+  82:motor_control.c ****         /*sprintf(detect, "2 -- POT:: %d -- SERVO2 %d\n", potentio_cmd, servo_cmd_2);
+  83:motor_control.c ****         UART_PutString(detect);*/
+ARM GAS  C:\Users\ibrah\AppData\Local\Temp\ccmUVnXM.s 			page 7
+
+
+  84:motor_control.c **** 
+  85:motor_control.c **** }
+  86:motor_control.c **** 
+  87:motor_control.c **** 
+  88:motor_control.c **** 
+  89:motor_control.c **** 
+  90:motor_control.c **** void Joystick_MoveServo1()
+  91:motor_control.c **** {
+ 260              		.loc 1 91 0
+ 261              		.cfi_startproc
+ 262              		@ args = 0, pretend = 0, frame = 0
+ 263              		@ frame_needed = 0, uses_anonymous_args = 0
+ 264 0000 10B5     		push	{r4, lr}
+ 265              		.cfi_def_cfa_offset 8
+ 266              		.cfi_offset 4, -8
+ 267              		.cfi_offset 14, -4
+  92:motor_control.c ****         
+  93:motor_control.c ****         AMux_Select(0);
+ 268              		.loc 1 93 0
+ 269 0002 0020     		movs	r0, #0
+ 270 0004 FFF7FEFF 		bl	AMux_Select
+ 271              	.LVL21:
+  94:motor_control.c ****         potentio_cmd = ADC_Read16(); // de base à 551 (0 to 1035)
+ 272              		.loc 1 94 0
+ 273 0008 FFF7FEFF 		bl	ADC_Read16
+ 274              	.LVL22:
+ 275 000c 164C     		ldr	r4, .L23+16
+ 276 000e A060     		str	r0, [r4, #8]
+  95:motor_control.c ****     
+  96:motor_control.c ****         servo_cmd_1 = 3800 + (potentio_cmd - 531)*(SERVO1_POT2PWM);
+ 277              		.loc 1 96 0
+ 278 0010 A0F21320 		subw	r0, r0, #531
+ 279 0014 FFF7FEFF 		bl	__aeabi_i2d
+ 280              	.LVL23:
+ 281 0018 0FA3     		adr	r3, .L23
+ 282 001a D3E90023 		ldrd	r2, [r3]
+ 283 001e FFF7FEFF 		bl	__aeabi_dmul
+ 284              	.LVL24:
+ 285 0022 0FA3     		adr	r3, .L23+8
+ 286 0024 D3E90023 		ldrd	r2, [r3]
+ 287 0028 FFF7FEFF 		bl	__aeabi_dadd
+ 288              	.LVL25:
+ 289 002c FFF7FEFF 		bl	__aeabi_d2iz
+ 290              	.LVL26:
+ 291 0030 2060     		str	r0, [r4]
+  97:motor_control.c ****             
+  98:motor_control.c ****         if (servo_cmd_1 > 6000)
+ 292              		.loc 1 98 0
+ 293 0032 41F27073 		movw	r3, #6000
+ 294 0036 9842     		cmp	r0, r3
+ 295 0038 02DD     		ble	.L20
+  99:motor_control.c ****         {
+ 100:motor_control.c ****          servo_cmd_1 = 6000;   
+ 296              		.loc 1 100 0
+ 297 003a 1A46     		mov	r2, r3
+ 298 003c 2260     		str	r2, [r4]
+ 299 003e 06E0     		b	.L21
+ARM GAS  C:\Users\ibrah\AppData\Local\Temp\ccmUVnXM.s 			page 8
+
+
+ 300              	.L20:
+ 101:motor_control.c ****         }
+ 102:motor_control.c ****         else if (servo_cmd_1 < 1200)
+ 301              		.loc 1 102 0
+ 302 0040 B0F5966F 		cmp	r0, #1200
+ 303 0044 03DA     		bge	.L21
+ 103:motor_control.c ****         {
+ 104:motor_control.c ****             servo_cmd_1 = 1200;
+ 304              		.loc 1 104 0
+ 305 0046 4FF49662 		mov	r2, #1200
+ 306 004a 074B     		ldr	r3, .L23+16
+ 307 004c 1A60     		str	r2, [r3]
+ 308              	.L21:
+ 105:motor_control.c ****         }
+ 106:motor_control.c ****         
+ 107:motor_control.c ****         PWM_WriteCompare1(servo_cmd_1); 
+ 309              		.loc 1 107 0
+ 310 004e 064B     		ldr	r3, .L23+16
+ 311 0050 1888     		ldrh	r0, [r3]
+ 312 0052 FFF7FEFF 		bl	PWM_WriteCompare1
+ 313              	.LVL27:
+ 314 0056 10BD     		pop	{r4, pc}
+ 315              	.L24:
+ 316              		.align	3
+ 317              	.L23:
+ 318 0058 05A3923A 		.word	982688517
+ 319 005c 018D1240 		.word	1074957569
+ 320 0060 00000000 		.word	0
+ 321 0064 00B0AD40 		.word	1085124608
+ 322 0068 00000000 		.word	.LANCHOR0
+ 323              		.cfi_endproc
+ 324              	.LFE68:
+ 325              		.size	Joystick_MoveServo1, .-Joystick_MoveServo1
+ 326              		.section	.text.Joystick_MoveServo2,"ax",%progbits
+ 327              		.align	2
+ 328              		.global	Joystick_MoveServo2
+ 329              		.thumb
+ 330              		.thumb_func
+ 331              		.type	Joystick_MoveServo2, %function
+ 332              	Joystick_MoveServo2:
+ 333              	.LFB69:
+ 108:motor_control.c ****         
+ 109:motor_control.c ****         /*sprintf(detect, "1 -- POT:: %d -- SERVO1 %d\n", cmd, servo_cmd_1);
+ 110:motor_control.c ****         UART_PutString(detect);
+ 111:motor_control.c ****         
+ 112:motor_control.c ****          */ 
+ 113:motor_control.c ****     
+ 114:motor_control.c **** }
+ 115:motor_control.c **** 
+ 116:motor_control.c **** 
+ 117:motor_control.c **** void Joystick_MoveServo2()
+ 118:motor_control.c **** {
+ 334              		.loc 1 118 0
+ 335              		.cfi_startproc
+ 336              		@ args = 0, pretend = 0, frame = 0
+ 337              		@ frame_needed = 0, uses_anonymous_args = 0
+ 338 0000 10B5     		push	{r4, lr}
+ARM GAS  C:\Users\ibrah\AppData\Local\Temp\ccmUVnXM.s 			page 9
+
+
+ 339              		.cfi_def_cfa_offset 8
+ 340              		.cfi_offset 4, -8
+ 341              		.cfi_offset 14, -4
+ 119:motor_control.c ****         AMux_Select(1);
+ 342              		.loc 1 119 0
+ 343 0002 0120     		movs	r0, #1
+ 344 0004 FFF7FEFF 		bl	AMux_Select
+ 345              	.LVL28:
+ 120:motor_control.c ****         potentio_cmd = ADC_Read16(); // de base à 551 (0 to 1035)
+ 346              		.loc 1 120 0
+ 347 0008 FFF7FEFF 		bl	ADC_Read16
+ 348              	.LVL29:
+ 349 000c 164C     		ldr	r4, .L29+16
+ 350 000e A060     		str	r0, [r4, #8]
+ 121:motor_control.c ****         servo_cmd_2 = 2025 + (potentio_cmd - 551)*(SERVO2_POT2PWM);
+ 351              		.loc 1 121 0
+ 352 0010 A0F22720 		subw	r0, r0, #551
+ 353 0014 FFF7FEFF 		bl	__aeabi_i2d
+ 354              	.LVL30:
+ 355 0018 0FA3     		adr	r3, .L29
+ 356 001a D3E90023 		ldrd	r2, [r3]
+ 357 001e FFF7FEFF 		bl	__aeabi_dmul
+ 358              	.LVL31:
+ 359 0022 0FA3     		adr	r3, .L29+8
+ 360 0024 D3E90023 		ldrd	r2, [r3]
+ 361 0028 FFF7FEFF 		bl	__aeabi_dadd
+ 362              	.LVL32:
+ 363 002c FFF7FEFF 		bl	__aeabi_d2iz
+ 364              	.LVL33:
+ 365 0030 6060     		str	r0, [r4, #4]
+ 122:motor_control.c ****         
+ 123:motor_control.c ****         if (servo_cmd_2 > 2850)
+ 366              		.loc 1 123 0
+ 367 0032 40F62233 		movw	r3, #2850
+ 368 0036 9842     		cmp	r0, r3
+ 369 0038 02DD     		ble	.L26
+ 124:motor_control.c ****         {
+ 125:motor_control.c ****          servo_cmd_2 = 2850;   
+ 370              		.loc 1 125 0
+ 371 003a 1A46     		mov	r2, r3
+ 372 003c 6260     		str	r2, [r4, #4]
+ 373 003e 06E0     		b	.L27
+ 374              	.L26:
+ 126:motor_control.c ****         }
+ 127:motor_control.c ****         else if (servo_cmd_2 < 1200)
+ 375              		.loc 1 127 0
+ 376 0040 B0F5966F 		cmp	r0, #1200
+ 377 0044 03DA     		bge	.L27
+ 128:motor_control.c ****         {
+ 129:motor_control.c ****             servo_cmd_2 = 1200;
+ 378              		.loc 1 129 0
+ 379 0046 4FF49662 		mov	r2, #1200
+ 380 004a 074B     		ldr	r3, .L29+16
+ 381 004c 5A60     		str	r2, [r3, #4]
+ 382              	.L27:
+ 130:motor_control.c ****         }
+ 131:motor_control.c ****         
+ARM GAS  C:\Users\ibrah\AppData\Local\Temp\ccmUVnXM.s 			page 10
+
+
+ 132:motor_control.c ****         PWM_WriteCompare2(servo_cmd_2);
+ 383              		.loc 1 132 0
+ 384 004e 064B     		ldr	r3, .L29+16
+ 385 0050 9888     		ldrh	r0, [r3, #4]
+ 386 0052 FFF7FEFF 		bl	PWM_WriteCompare2
+ 387              	.LVL34:
+ 388 0056 10BD     		pop	{r4, pc}
+ 389              	.L30:
+ 390              		.align	3
+ 391              	.L29:
+ 392 0058 FD87F4DB 		.word	-604731395
+ 393 005c D781F93F 		.word	1073316311
+ 394 0060 00000000 		.word	0
+ 395 0064 00A49F40 		.word	1084204032
+ 396 0068 00000000 		.word	.LANCHOR0
+ 397              		.cfi_endproc
+ 398              	.LFE69:
+ 399              		.size	Joystick_MoveServo2, .-Joystick_MoveServo2
+ 400              		.global	servo_cmd_2
+ 401              		.global	servo_cmd_1
+ 402              		.global	potentio_cmd
+ 403              		.bss
+ 404              		.align	2
+ 405              		.set	.LANCHOR0,. + 0
+ 406              		.type	servo_cmd_1, %object
+ 407              		.size	servo_cmd_1, 4
+ 408              	servo_cmd_1:
+ 409 0000 00000000 		.space	4
+ 410              		.type	servo_cmd_2, %object
+ 411              		.size	servo_cmd_2, 4
+ 412              	servo_cmd_2:
+ 413 0004 00000000 		.space	4
+ 414              		.type	potentio_cmd, %object
+ 415              		.size	potentio_cmd, 4
+ 416              	potentio_cmd:
+ 417 0008 00000000 		.space	4
+ 418              		.text
+ 419              	.Letext0:
+ 420              		.file 2 "c:\\program files (x86)\\cypress\\psoc creator\\4.4\\psoc creator\\import\\gnu\\arm\\5.4.
+ 421              		.file 3 "c:\\program files (x86)\\cypress\\psoc creator\\4.4\\psoc creator\\import\\gnu\\arm\\5.4.
+ 422              		.file 4 "Generated_Source\\PSoC5/core_cm3.h"
+ 423              		.file 5 "Generated_Source\\PSoC5/PWM.h"
+ 424              		.file 6 "Generated_Source\\PSoC5/ADC.h"
+ 425              		.file 7 "Generated_Source\\PSoC5/AMux.h"
+ 426              		.section	.debug_info,"",%progbits
+ 427              	.Ldebug_info0:
+ 428 0000 AA020000 		.4byte	0x2aa
+ 429 0004 0400     		.2byte	0x4
+ 430 0006 00000000 		.4byte	.Ldebug_abbrev0
+ 431 000a 04       		.byte	0x4
+ 432 000b 01       		.uleb128 0x1
+ 433 000c D8000000 		.4byte	.LASF37
+ 434 0010 0C       		.byte	0xc
+ 435 0011 FD010000 		.4byte	.LASF38
+ 436 0015 3B000000 		.4byte	.LASF39
+ 437 0019 00000000 		.4byte	.Ldebug_ranges0+0
+ 438 001d 00000000 		.4byte	0
+ARM GAS  C:\Users\ibrah\AppData\Local\Temp\ccmUVnXM.s 			page 11
+
+
+ 439 0021 00000000 		.4byte	.Ldebug_line0
+ 440 0025 02       		.uleb128 0x2
+ 441 0026 01       		.byte	0x1
+ 442 0027 06       		.byte	0x6
+ 443 0028 BE000000 		.4byte	.LASF0
+ 444 002c 02       		.uleb128 0x2
+ 445 002d 01       		.byte	0x1
+ 446 002e 08       		.byte	0x8
+ 447 002f CA000000 		.4byte	.LASF1
+ 448 0033 02       		.uleb128 0x2
+ 449 0034 02       		.byte	0x2
+ 450 0035 05       		.byte	0x5
+ 451 0036 5E020000 		.4byte	.LASF2
+ 452 003a 02       		.uleb128 0x2
+ 453 003b 02       		.byte	0x2
+ 454 003c 07       		.byte	0x7
+ 455 003d 94010000 		.4byte	.LASF3
+ 456 0041 03       		.uleb128 0x3
+ 457 0042 7E000000 		.4byte	.LASF9
+ 458 0046 02       		.byte	0x2
+ 459 0047 3F       		.byte	0x3f
+ 460 0048 4C000000 		.4byte	0x4c
+ 461 004c 02       		.uleb128 0x2
+ 462 004d 04       		.byte	0x4
+ 463 004e 05       		.byte	0x5
+ 464 004f 8A020000 		.4byte	.LASF4
+ 465 0053 02       		.uleb128 0x2
+ 466 0054 04       		.byte	0x4
+ 467 0055 07       		.byte	0x7
+ 468 0056 82010000 		.4byte	.LASF5
+ 469 005a 02       		.uleb128 0x2
+ 470 005b 08       		.byte	0x8
+ 471 005c 05       		.byte	0x5
+ 472 005d 3D020000 		.4byte	.LASF6
+ 473 0061 02       		.uleb128 0x2
+ 474 0062 08       		.byte	0x8
+ 475 0063 07       		.byte	0x7
+ 476 0064 D4010000 		.4byte	.LASF7
+ 477 0068 04       		.uleb128 0x4
+ 478 0069 04       		.byte	0x4
+ 479 006a 05       		.byte	0x5
+ 480 006b 696E7400 		.ascii	"int\000"
+ 481 006f 02       		.uleb128 0x2
+ 482 0070 04       		.byte	0x4
+ 483 0071 07       		.byte	0x7
+ 484 0072 C7010000 		.4byte	.LASF8
+ 485 0076 03       		.uleb128 0x3
+ 486 0077 56020000 		.4byte	.LASF10
+ 487 007b 03       		.byte	0x3
+ 488 007c 2C       		.byte	0x2c
+ 489 007d 41000000 		.4byte	0x41
+ 490 0081 02       		.uleb128 0x2
+ 491 0082 04       		.byte	0x4
+ 492 0083 04       		.byte	0x4
+ 493 0084 B8000000 		.4byte	.LASF11
+ 494 0088 02       		.uleb128 0x2
+ 495 0089 08       		.byte	0x8
+ARM GAS  C:\Users\ibrah\AppData\Local\Temp\ccmUVnXM.s 			page 12
+
+
+ 496 008a 04       		.byte	0x4
+ 497 008b B4010000 		.4byte	.LASF12
+ 498 008f 02       		.uleb128 0x2
+ 499 0090 01       		.byte	0x1
+ 500 0091 08       		.byte	0x8
+ 501 0092 4B020000 		.4byte	.LASF13
+ 502 0096 02       		.uleb128 0x2
+ 503 0097 08       		.byte	0x8
+ 504 0098 04       		.byte	0x4
+ 505 0099 93020000 		.4byte	.LASF14
+ 506 009d 02       		.uleb128 0x2
+ 507 009e 04       		.byte	0x4
+ 508 009f 07       		.byte	0x7
+ 509 00a0 34020000 		.4byte	.LASF15
+ 510 00a4 05       		.uleb128 0x5
+ 511 00a5 22020000 		.4byte	.LASF16
+ 512 00a9 01       		.byte	0x1
+ 513 00aa 0E       		.byte	0xe
+ 514 00ab 00000000 		.4byte	.LFB63
+ 515 00af 14000000 		.4byte	.LFE63-.LFB63
+ 516 00b3 01       		.uleb128 0x1
+ 517 00b4 9C       		.byte	0x9c
+ 518 00b5 E0000000 		.4byte	0xe0
+ 519 00b9 06       		.uleb128 0x6
+ 520 00ba 0A000000 		.4byte	.LVL0
+ 521 00be 55020000 		.4byte	0x255
+ 522 00c2 CE000000 		.4byte	0xce
+ 523 00c6 07       		.uleb128 0x7
+ 524 00c7 01       		.uleb128 0x1
+ 525 00c8 50       		.byte	0x50
+ 526 00c9 03       		.uleb128 0x3
+ 527 00ca 0A       		.byte	0xa
+ 528 00cb D80E     		.2byte	0xed8
+ 529 00cd 00       		.byte	0
+ 530 00ce 08       		.uleb128 0x8
+ 531 00cf 12000000 		.4byte	.LVL1
+ 532 00d3 60020000 		.4byte	0x260
+ 533 00d7 07       		.uleb128 0x7
+ 534 00d8 01       		.uleb128 0x1
+ 535 00d9 50       		.byte	0x50
+ 536 00da 03       		.uleb128 0x3
+ 537 00db 0A       		.byte	0xa
+ 538 00dc E907     		.2byte	0x7e9
+ 539 00de 00       		.byte	0
+ 540 00df 00       		.byte	0
+ 541 00e0 05       		.uleb128 0x5
+ 542 00e1 95000000 		.4byte	.LASF17
+ 543 00e5 01       		.byte	0x1
+ 544 00e6 16       		.byte	0x16
+ 545 00e7 00000000 		.4byte	.LFB64
+ 546 00eb 0C000000 		.4byte	.LFE64-.LFB64
+ 547 00ef 01       		.uleb128 0x1
+ 548 00f0 9C       		.byte	0x9c
+ 549 00f1 08010000 		.4byte	0x108
+ 550 00f5 09       		.uleb128 0x9
+ 551 00f6 06000000 		.4byte	.LVL2
+ 552 00fa 6B020000 		.4byte	0x26b
+ARM GAS  C:\Users\ibrah\AppData\Local\Temp\ccmUVnXM.s 			page 13
+
+
+ 553 00fe 09       		.uleb128 0x9
+ 554 00ff 0A000000 		.4byte	.LVL3
+ 555 0103 A4000000 		.4byte	0xa4
+ 556 0107 00       		.byte	0
+ 557 0108 05       		.uleb128 0x5
+ 558 0109 9F020000 		.4byte	.LASF18
+ 559 010d 01       		.byte	0x1
+ 560 010e 22       		.byte	0x22
+ 561 010f 00000000 		.4byte	.LFB65
+ 562 0113 10000000 		.4byte	.LFE65-.LFB65
+ 563 0117 01       		.uleb128 0x1
+ 564 0118 9C       		.byte	0x9c
+ 565 0119 39010000 		.4byte	0x139
+ 566 011d 09       		.uleb128 0x9
+ 567 011e 06000000 		.4byte	.LVL4
+ 568 0122 76020000 		.4byte	0x276
+ 569 0126 09       		.uleb128 0x9
+ 570 0127 0A000000 		.4byte	.LVL5
+ 571 012b 81020000 		.4byte	0x281
+ 572 012f 09       		.uleb128 0x9
+ 573 0130 0E000000 		.4byte	.LVL6
+ 574 0134 8C020000 		.4byte	0x28c
+ 575 0138 00       		.byte	0
+ 576 0139 0A       		.uleb128 0xa
+ 577 013a 00000000 		.4byte	.LASF19
+ 578 013e 01       		.byte	0x1
+ 579 013f 2C       		.byte	0x2c
+ 580 0140 00000000 		.4byte	.LFB66
+ 581 0144 64000000 		.4byte	.LFE66-.LFB66
+ 582 0148 01       		.uleb128 0x1
+ 583 0149 9C       		.byte	0x9c
+ 584 014a 67010000 		.4byte	0x167
+ 585 014e 0B       		.uleb128 0xb
+ 586 014f 72020000 		.4byte	.LASF21
+ 587 0153 01       		.byte	0x1
+ 588 0154 2C       		.byte	0x2c
+ 589 0155 67010000 		.4byte	0x167
+ 590 0159 00000000 		.4byte	.LLST0
+ 591 015d 09       		.uleb128 0x9
+ 592 015e 4E000000 		.4byte	.LVL13
+ 593 0162 55020000 		.4byte	0x255
+ 594 0166 00       		.byte	0
+ 595 0167 0C       		.uleb128 0xc
+ 596 0168 04       		.byte	0x4
+ 597 0169 81000000 		.4byte	0x81
+ 598 016d 0A       		.uleb128 0xa
+ 599 016e 77020000 		.4byte	.LASF20
+ 600 0172 01       		.byte	0x1
+ 601 0173 42       		.byte	0x42
+ 602 0174 00000000 		.4byte	.LFB67
+ 603 0178 64000000 		.4byte	.LFE67-.LFB67
+ 604 017c 01       		.uleb128 0x1
+ 605 017d 9C       		.byte	0x9c
+ 606 017e 9B010000 		.4byte	0x19b
+ 607 0182 0B       		.uleb128 0xb
+ 608 0183 50020000 		.4byte	.LASF22
+ 609 0187 01       		.byte	0x1
+ARM GAS  C:\Users\ibrah\AppData\Local\Temp\ccmUVnXM.s 			page 14
+
+
+ 610 0188 42       		.byte	0x42
+ 611 0189 67010000 		.4byte	0x167
+ 612 018d 21000000 		.4byte	.LLST1
+ 613 0191 09       		.uleb128 0x9
+ 614 0192 4E000000 		.4byte	.LVL20
+ 615 0196 60020000 		.4byte	0x260
+ 616 019a 00       		.byte	0
+ 617 019b 0D       		.uleb128 0xd
+ 618 019c 13000000 		.4byte	.LASF23
+ 619 01a0 01       		.byte	0x1
+ 620 01a1 5A       		.byte	0x5a
+ 621 01a2 00000000 		.4byte	.LFB68
+ 622 01a6 6C000000 		.4byte	.LFE68-.LFB68
+ 623 01aa 01       		.uleb128 0x1
+ 624 01ab 9C       		.byte	0x9c
+ 625 01ac D6010000 		.4byte	0x1d6
+ 626 01b0 06       		.uleb128 0x6
+ 627 01b1 08000000 		.4byte	.LVL21
+ 628 01b5 97020000 		.4byte	0x297
+ 629 01b9 C3010000 		.4byte	0x1c3
+ 630 01bd 07       		.uleb128 0x7
+ 631 01be 01       		.uleb128 0x1
+ 632 01bf 50       		.byte	0x50
+ 633 01c0 01       		.uleb128 0x1
+ 634 01c1 30       		.byte	0x30
+ 635 01c2 00       		.byte	0
+ 636 01c3 09       		.uleb128 0x9
+ 637 01c4 0C000000 		.4byte	.LVL22
+ 638 01c8 A2020000 		.4byte	0x2a2
+ 639 01cc 09       		.uleb128 0x9
+ 640 01cd 56000000 		.4byte	.LVL27
+ 641 01d1 55020000 		.4byte	0x255
+ 642 01d5 00       		.byte	0
+ 643 01d6 0D       		.uleb128 0xd
+ 644 01d7 27000000 		.4byte	.LASF24
+ 645 01db 01       		.byte	0x1
+ 646 01dc 75       		.byte	0x75
+ 647 01dd 00000000 		.4byte	.LFB69
+ 648 01e1 6C000000 		.4byte	.LFE69-.LFB69
+ 649 01e5 01       		.uleb128 0x1
+ 650 01e6 9C       		.byte	0x9c
+ 651 01e7 11020000 		.4byte	0x211
+ 652 01eb 06       		.uleb128 0x6
+ 653 01ec 08000000 		.4byte	.LVL28
+ 654 01f0 97020000 		.4byte	0x297
+ 655 01f4 FE010000 		.4byte	0x1fe
+ 656 01f8 07       		.uleb128 0x7
+ 657 01f9 01       		.uleb128 0x1
+ 658 01fa 50       		.byte	0x50
+ 659 01fb 01       		.uleb128 0x1
+ 660 01fc 31       		.byte	0x31
+ 661 01fd 00       		.byte	0
+ 662 01fe 09       		.uleb128 0x9
+ 663 01ff 0C000000 		.4byte	.LVL29
+ 664 0203 A2020000 		.4byte	0x2a2
+ 665 0207 09       		.uleb128 0x9
+ 666 0208 56000000 		.4byte	.LVL34
+ARM GAS  C:\Users\ibrah\AppData\Local\Temp\ccmUVnXM.s 			page 15
+
+
+ 667 020c 60020000 		.4byte	0x260
+ 668 0210 00       		.byte	0
+ 669 0211 0E       		.uleb128 0xe
+ 670 0212 A7010000 		.4byte	.LASF25
+ 671 0216 04       		.byte	0x4
+ 672 0217 1207     		.2byte	0x712
+ 673 0219 1D020000 		.4byte	0x21d
+ 674 021d 0F       		.uleb128 0xf
+ 675 021e 76000000 		.4byte	0x76
+ 676 0222 10       		.uleb128 0x10
+ 677 0223 88000000 		.4byte	.LASF26
+ 678 0227 01       		.byte	0x1
+ 679 0228 07       		.byte	0x7
+ 680 0229 68000000 		.4byte	0x68
+ 681 022d 05       		.uleb128 0x5
+ 682 022e 03       		.byte	0x3
+ 683 022f 00000000 		.4byte	potentio_cmd
+ 684 0233 10       		.uleb128 0x10
+ 685 0234 AE020000 		.4byte	.LASF27
+ 686 0238 01       		.byte	0x1
+ 687 0239 08       		.byte	0x8
+ 688 023a 68000000 		.4byte	0x68
+ 689 023e 05       		.uleb128 0x5
+ 690 023f 03       		.byte	0x3
+ 691 0240 00000000 		.4byte	servo_cmd_1
+ 692 0244 10       		.uleb128 0x10
+ 693 0245 BA020000 		.4byte	.LASF28
+ 694 0249 01       		.byte	0x1
+ 695 024a 09       		.byte	0x9
+ 696 024b 68000000 		.4byte	0x68
+ 697 024f 05       		.uleb128 0x5
+ 698 0250 03       		.byte	0x3
+ 699 0251 00000000 		.4byte	servo_cmd_2
+ 700 0255 11       		.uleb128 0x11
+ 701 0256 EB010000 		.4byte	.LASF29
+ 702 025a EB010000 		.4byte	.LASF29
+ 703 025e 05       		.byte	0x5
+ 704 025f C7       		.byte	0xc7
+ 705 0260 11       		.uleb128 0x11
+ 706 0261 A6000000 		.4byte	.LASF30
+ 707 0265 A6000000 		.4byte	.LASF30
+ 708 0269 05       		.byte	0x5
+ 709 026a CA       		.byte	0xca
+ 710 026b 11       		.uleb128 0x11
+ 711 026c 68020000 		.4byte	.LASF31
+ 712 0270 68020000 		.4byte	.LASF31
+ 713 0274 05       		.byte	0x5
+ 714 0275 92       		.byte	0x92
+ 715 0276 11       		.uleb128 0x11
+ 716 0277 0D020000 		.4byte	.LASF32
+ 717 027b 0D020000 		.4byte	.LASF32
+ 718 027f 06       		.byte	0x6
+ 719 0280 3A       		.byte	0x3a
+ 720 0281 11       		.uleb128 0x11
+ 721 0282 66010000 		.4byte	.LASF33
+ 722 0286 66010000 		.4byte	.LASF33
+ 723 028a 06       		.byte	0x6
+ARM GAS  C:\Users\ibrah\AppData\Local\Temp\ccmUVnXM.s 			page 16
+
+
+ 724 028b 3D       		.byte	0x3d
+ 725 028c 11       		.uleb128 0x11
+ 726 028d 77010000 		.4byte	.LASF34
+ 727 0291 77010000 		.4byte	.LASF34
+ 728 0295 07       		.byte	0x7
+ 729 0296 25       		.byte	0x25
+ 730 0297 11       		.uleb128 0x11
+ 731 0298 BB010000 		.4byte	.LASF35
+ 732 029c BB010000 		.4byte	.LASF35
+ 733 02a0 07       		.byte	0x7
+ 734 02a1 57       		.byte	0x57
+ 735 02a2 11       		.uleb128 0x11
+ 736 02a3 17020000 		.4byte	.LASF36
+ 737 02a7 17020000 		.4byte	.LASF36
+ 738 02ab 06       		.byte	0x6
+ 739 02ac 55       		.byte	0x55
+ 740 02ad 00       		.byte	0
+ 741              		.section	.debug_abbrev,"",%progbits
+ 742              	.Ldebug_abbrev0:
+ 743 0000 01       		.uleb128 0x1
+ 744 0001 11       		.uleb128 0x11
+ 745 0002 01       		.byte	0x1
+ 746 0003 25       		.uleb128 0x25
+ 747 0004 0E       		.uleb128 0xe
+ 748 0005 13       		.uleb128 0x13
+ 749 0006 0B       		.uleb128 0xb
+ 750 0007 03       		.uleb128 0x3
+ 751 0008 0E       		.uleb128 0xe
+ 752 0009 1B       		.uleb128 0x1b
+ 753 000a 0E       		.uleb128 0xe
+ 754 000b 55       		.uleb128 0x55
+ 755 000c 17       		.uleb128 0x17
+ 756 000d 11       		.uleb128 0x11
+ 757 000e 01       		.uleb128 0x1
+ 758 000f 10       		.uleb128 0x10
+ 759 0010 17       		.uleb128 0x17
+ 760 0011 00       		.byte	0
+ 761 0012 00       		.byte	0
+ 762 0013 02       		.uleb128 0x2
+ 763 0014 24       		.uleb128 0x24
+ 764 0015 00       		.byte	0
+ 765 0016 0B       		.uleb128 0xb
+ 766 0017 0B       		.uleb128 0xb
+ 767 0018 3E       		.uleb128 0x3e
+ 768 0019 0B       		.uleb128 0xb
+ 769 001a 03       		.uleb128 0x3
+ 770 001b 0E       		.uleb128 0xe
+ 771 001c 00       		.byte	0
+ 772 001d 00       		.byte	0
+ 773 001e 03       		.uleb128 0x3
+ 774 001f 16       		.uleb128 0x16
+ 775 0020 00       		.byte	0
+ 776 0021 03       		.uleb128 0x3
+ 777 0022 0E       		.uleb128 0xe
+ 778 0023 3A       		.uleb128 0x3a
+ 779 0024 0B       		.uleb128 0xb
+ 780 0025 3B       		.uleb128 0x3b
+ARM GAS  C:\Users\ibrah\AppData\Local\Temp\ccmUVnXM.s 			page 17
+
+
+ 781 0026 0B       		.uleb128 0xb
+ 782 0027 49       		.uleb128 0x49
+ 783 0028 13       		.uleb128 0x13
+ 784 0029 00       		.byte	0
+ 785 002a 00       		.byte	0
+ 786 002b 04       		.uleb128 0x4
+ 787 002c 24       		.uleb128 0x24
+ 788 002d 00       		.byte	0
+ 789 002e 0B       		.uleb128 0xb
+ 790 002f 0B       		.uleb128 0xb
+ 791 0030 3E       		.uleb128 0x3e
+ 792 0031 0B       		.uleb128 0xb
+ 793 0032 03       		.uleb128 0x3
+ 794 0033 08       		.uleb128 0x8
+ 795 0034 00       		.byte	0
+ 796 0035 00       		.byte	0
+ 797 0036 05       		.uleb128 0x5
+ 798 0037 2E       		.uleb128 0x2e
+ 799 0038 01       		.byte	0x1
+ 800 0039 3F       		.uleb128 0x3f
+ 801 003a 19       		.uleb128 0x19
+ 802 003b 03       		.uleb128 0x3
+ 803 003c 0E       		.uleb128 0xe
+ 804 003d 3A       		.uleb128 0x3a
+ 805 003e 0B       		.uleb128 0xb
+ 806 003f 3B       		.uleb128 0x3b
+ 807 0040 0B       		.uleb128 0xb
+ 808 0041 11       		.uleb128 0x11
+ 809 0042 01       		.uleb128 0x1
+ 810 0043 12       		.uleb128 0x12
+ 811 0044 06       		.uleb128 0x6
+ 812 0045 40       		.uleb128 0x40
+ 813 0046 18       		.uleb128 0x18
+ 814 0047 9742     		.uleb128 0x2117
+ 815 0049 19       		.uleb128 0x19
+ 816 004a 01       		.uleb128 0x1
+ 817 004b 13       		.uleb128 0x13
+ 818 004c 00       		.byte	0
+ 819 004d 00       		.byte	0
+ 820 004e 06       		.uleb128 0x6
+ 821 004f 898201   		.uleb128 0x4109
+ 822 0052 01       		.byte	0x1
+ 823 0053 11       		.uleb128 0x11
+ 824 0054 01       		.uleb128 0x1
+ 825 0055 31       		.uleb128 0x31
+ 826 0056 13       		.uleb128 0x13
+ 827 0057 01       		.uleb128 0x1
+ 828 0058 13       		.uleb128 0x13
+ 829 0059 00       		.byte	0
+ 830 005a 00       		.byte	0
+ 831 005b 07       		.uleb128 0x7
+ 832 005c 8A8201   		.uleb128 0x410a
+ 833 005f 00       		.byte	0
+ 834 0060 02       		.uleb128 0x2
+ 835 0061 18       		.uleb128 0x18
+ 836 0062 9142     		.uleb128 0x2111
+ 837 0064 18       		.uleb128 0x18
+ARM GAS  C:\Users\ibrah\AppData\Local\Temp\ccmUVnXM.s 			page 18
+
+
+ 838 0065 00       		.byte	0
+ 839 0066 00       		.byte	0
+ 840 0067 08       		.uleb128 0x8
+ 841 0068 898201   		.uleb128 0x4109
+ 842 006b 01       		.byte	0x1
+ 843 006c 11       		.uleb128 0x11
+ 844 006d 01       		.uleb128 0x1
+ 845 006e 31       		.uleb128 0x31
+ 846 006f 13       		.uleb128 0x13
+ 847 0070 00       		.byte	0
+ 848 0071 00       		.byte	0
+ 849 0072 09       		.uleb128 0x9
+ 850 0073 898201   		.uleb128 0x4109
+ 851 0076 00       		.byte	0
+ 852 0077 11       		.uleb128 0x11
+ 853 0078 01       		.uleb128 0x1
+ 854 0079 31       		.uleb128 0x31
+ 855 007a 13       		.uleb128 0x13
+ 856 007b 00       		.byte	0
+ 857 007c 00       		.byte	0
+ 858 007d 0A       		.uleb128 0xa
+ 859 007e 2E       		.uleb128 0x2e
+ 860 007f 01       		.byte	0x1
+ 861 0080 3F       		.uleb128 0x3f
+ 862 0081 19       		.uleb128 0x19
+ 863 0082 03       		.uleb128 0x3
+ 864 0083 0E       		.uleb128 0xe
+ 865 0084 3A       		.uleb128 0x3a
+ 866 0085 0B       		.uleb128 0xb
+ 867 0086 3B       		.uleb128 0x3b
+ 868 0087 0B       		.uleb128 0xb
+ 869 0088 27       		.uleb128 0x27
+ 870 0089 19       		.uleb128 0x19
+ 871 008a 11       		.uleb128 0x11
+ 872 008b 01       		.uleb128 0x1
+ 873 008c 12       		.uleb128 0x12
+ 874 008d 06       		.uleb128 0x6
+ 875 008e 40       		.uleb128 0x40
+ 876 008f 18       		.uleb128 0x18
+ 877 0090 9642     		.uleb128 0x2116
+ 878 0092 19       		.uleb128 0x19
+ 879 0093 01       		.uleb128 0x1
+ 880 0094 13       		.uleb128 0x13
+ 881 0095 00       		.byte	0
+ 882 0096 00       		.byte	0
+ 883 0097 0B       		.uleb128 0xb
+ 884 0098 05       		.uleb128 0x5
+ 885 0099 00       		.byte	0
+ 886 009a 03       		.uleb128 0x3
+ 887 009b 0E       		.uleb128 0xe
+ 888 009c 3A       		.uleb128 0x3a
+ 889 009d 0B       		.uleb128 0xb
+ 890 009e 3B       		.uleb128 0x3b
+ 891 009f 0B       		.uleb128 0xb
+ 892 00a0 49       		.uleb128 0x49
+ 893 00a1 13       		.uleb128 0x13
+ 894 00a2 02       		.uleb128 0x2
+ARM GAS  C:\Users\ibrah\AppData\Local\Temp\ccmUVnXM.s 			page 19
+
+
+ 895 00a3 17       		.uleb128 0x17
+ 896 00a4 00       		.byte	0
+ 897 00a5 00       		.byte	0
+ 898 00a6 0C       		.uleb128 0xc
+ 899 00a7 0F       		.uleb128 0xf
+ 900 00a8 00       		.byte	0
+ 901 00a9 0B       		.uleb128 0xb
+ 902 00aa 0B       		.uleb128 0xb
+ 903 00ab 49       		.uleb128 0x49
+ 904 00ac 13       		.uleb128 0x13
+ 905 00ad 00       		.byte	0
+ 906 00ae 00       		.byte	0
+ 907 00af 0D       		.uleb128 0xd
+ 908 00b0 2E       		.uleb128 0x2e
+ 909 00b1 01       		.byte	0x1
+ 910 00b2 3F       		.uleb128 0x3f
+ 911 00b3 19       		.uleb128 0x19
+ 912 00b4 03       		.uleb128 0x3
+ 913 00b5 0E       		.uleb128 0xe
+ 914 00b6 3A       		.uleb128 0x3a
+ 915 00b7 0B       		.uleb128 0xb
+ 916 00b8 3B       		.uleb128 0x3b
+ 917 00b9 0B       		.uleb128 0xb
+ 918 00ba 11       		.uleb128 0x11
+ 919 00bb 01       		.uleb128 0x1
+ 920 00bc 12       		.uleb128 0x12
+ 921 00bd 06       		.uleb128 0x6
+ 922 00be 40       		.uleb128 0x40
+ 923 00bf 18       		.uleb128 0x18
+ 924 00c0 9642     		.uleb128 0x2116
+ 925 00c2 19       		.uleb128 0x19
+ 926 00c3 01       		.uleb128 0x1
+ 927 00c4 13       		.uleb128 0x13
+ 928 00c5 00       		.byte	0
+ 929 00c6 00       		.byte	0
+ 930 00c7 0E       		.uleb128 0xe
+ 931 00c8 34       		.uleb128 0x34
+ 932 00c9 00       		.byte	0
+ 933 00ca 03       		.uleb128 0x3
+ 934 00cb 0E       		.uleb128 0xe
+ 935 00cc 3A       		.uleb128 0x3a
+ 936 00cd 0B       		.uleb128 0xb
+ 937 00ce 3B       		.uleb128 0x3b
+ 938 00cf 05       		.uleb128 0x5
+ 939 00d0 49       		.uleb128 0x49
+ 940 00d1 13       		.uleb128 0x13
+ 941 00d2 3F       		.uleb128 0x3f
+ 942 00d3 19       		.uleb128 0x19
+ 943 00d4 3C       		.uleb128 0x3c
+ 944 00d5 19       		.uleb128 0x19
+ 945 00d6 00       		.byte	0
+ 946 00d7 00       		.byte	0
+ 947 00d8 0F       		.uleb128 0xf
+ 948 00d9 35       		.uleb128 0x35
+ 949 00da 00       		.byte	0
+ 950 00db 49       		.uleb128 0x49
+ 951 00dc 13       		.uleb128 0x13
+ARM GAS  C:\Users\ibrah\AppData\Local\Temp\ccmUVnXM.s 			page 20
+
+
+ 952 00dd 00       		.byte	0
+ 953 00de 00       		.byte	0
+ 954 00df 10       		.uleb128 0x10
+ 955 00e0 34       		.uleb128 0x34
+ 956 00e1 00       		.byte	0
+ 957 00e2 03       		.uleb128 0x3
+ 958 00e3 0E       		.uleb128 0xe
+ 959 00e4 3A       		.uleb128 0x3a
+ 960 00e5 0B       		.uleb128 0xb
+ 961 00e6 3B       		.uleb128 0x3b
+ 962 00e7 0B       		.uleb128 0xb
+ 963 00e8 49       		.uleb128 0x49
+ 964 00e9 13       		.uleb128 0x13
+ 965 00ea 3F       		.uleb128 0x3f
+ 966 00eb 19       		.uleb128 0x19
+ 967 00ec 02       		.uleb128 0x2
+ 968 00ed 18       		.uleb128 0x18
+ 969 00ee 00       		.byte	0
+ 970 00ef 00       		.byte	0
+ 971 00f0 11       		.uleb128 0x11
+ 972 00f1 2E       		.uleb128 0x2e
+ 973 00f2 00       		.byte	0
+ 974 00f3 3F       		.uleb128 0x3f
+ 975 00f4 19       		.uleb128 0x19
+ 976 00f5 3C       		.uleb128 0x3c
+ 977 00f6 19       		.uleb128 0x19
+ 978 00f7 6E       		.uleb128 0x6e
+ 979 00f8 0E       		.uleb128 0xe
+ 980 00f9 03       		.uleb128 0x3
+ 981 00fa 0E       		.uleb128 0xe
+ 982 00fb 3A       		.uleb128 0x3a
+ 983 00fc 0B       		.uleb128 0xb
+ 984 00fd 3B       		.uleb128 0x3b
+ 985 00fe 0B       		.uleb128 0xb
+ 986 00ff 00       		.byte	0
+ 987 0100 00       		.byte	0
+ 988 0101 00       		.byte	0
+ 989              		.section	.debug_loc,"",%progbits
+ 990              	.Ldebug_loc0:
+ 991              	.LLST0:
+ 992 0000 00000000 		.4byte	.LVL7
+ 993 0004 04000000 		.4byte	.LVL8
+ 994 0008 0100     		.2byte	0x1
+ 995 000a 50       		.byte	0x50
+ 996 000b 04000000 		.4byte	.LVL8
+ 997 000f 64000000 		.4byte	.LFE66
+ 998 0013 0400     		.2byte	0x4
+ 999 0015 F3       		.byte	0xf3
+ 1000 0016 01       		.uleb128 0x1
+ 1001 0017 50       		.byte	0x50
+ 1002 0018 9F       		.byte	0x9f
+ 1003 0019 00000000 		.4byte	0
+ 1004 001d 00000000 		.4byte	0
+ 1005              	.LLST1:
+ 1006 0021 00000000 		.4byte	.LVL14
+ 1007 0025 04000000 		.4byte	.LVL15
+ 1008 0029 0100     		.2byte	0x1
+ARM GAS  C:\Users\ibrah\AppData\Local\Temp\ccmUVnXM.s 			page 21
+
+
+ 1009 002b 50       		.byte	0x50
+ 1010 002c 04000000 		.4byte	.LVL15
+ 1011 0030 64000000 		.4byte	.LFE67
+ 1012 0034 0400     		.2byte	0x4
+ 1013 0036 F3       		.byte	0xf3
+ 1014 0037 01       		.uleb128 0x1
+ 1015 0038 50       		.byte	0x50
+ 1016 0039 9F       		.byte	0x9f
+ 1017 003a 00000000 		.4byte	0
+ 1018 003e 00000000 		.4byte	0
+ 1019              		.section	.debug_aranges,"",%progbits
+ 1020 0000 4C000000 		.4byte	0x4c
+ 1021 0004 0200     		.2byte	0x2
+ 1022 0006 00000000 		.4byte	.Ldebug_info0
+ 1023 000a 04       		.byte	0x4
+ 1024 000b 00       		.byte	0
+ 1025 000c 0000     		.2byte	0
+ 1026 000e 0000     		.2byte	0
+ 1027 0010 00000000 		.4byte	.LFB63
+ 1028 0014 14000000 		.4byte	.LFE63-.LFB63
+ 1029 0018 00000000 		.4byte	.LFB64
+ 1030 001c 0C000000 		.4byte	.LFE64-.LFB64
+ 1031 0020 00000000 		.4byte	.LFB65
+ 1032 0024 10000000 		.4byte	.LFE65-.LFB65
+ 1033 0028 00000000 		.4byte	.LFB66
+ 1034 002c 64000000 		.4byte	.LFE66-.LFB66
+ 1035 0030 00000000 		.4byte	.LFB67
+ 1036 0034 64000000 		.4byte	.LFE67-.LFB67
+ 1037 0038 00000000 		.4byte	.LFB68
+ 1038 003c 6C000000 		.4byte	.LFE68-.LFB68
+ 1039 0040 00000000 		.4byte	.LFB69
+ 1040 0044 6C000000 		.4byte	.LFE69-.LFB69
+ 1041 0048 00000000 		.4byte	0
+ 1042 004c 00000000 		.4byte	0
+ 1043              		.section	.debug_ranges,"",%progbits
+ 1044              	.Ldebug_ranges0:
+ 1045 0000 00000000 		.4byte	.LFB63
+ 1046 0004 14000000 		.4byte	.LFE63
+ 1047 0008 00000000 		.4byte	.LFB64
+ 1048 000c 0C000000 		.4byte	.LFE64
+ 1049 0010 00000000 		.4byte	.LFB65
+ 1050 0014 10000000 		.4byte	.LFE65
+ 1051 0018 00000000 		.4byte	.LFB66
+ 1052 001c 64000000 		.4byte	.LFE66
+ 1053 0020 00000000 		.4byte	.LFB67
+ 1054 0024 64000000 		.4byte	.LFE67
+ 1055 0028 00000000 		.4byte	.LFB68
+ 1056 002c 6C000000 		.4byte	.LFE68
+ 1057 0030 00000000 		.4byte	.LFB69
+ 1058 0034 6C000000 		.4byte	.LFE69
+ 1059 0038 00000000 		.4byte	0
+ 1060 003c 00000000 		.4byte	0
+ 1061              		.section	.debug_line,"",%progbits
+ 1062              	.Ldebug_line0:
+ 1063 0000 FD010000 		.section	.debug_str,"MS",%progbits,1
+ 1063      02006401 
+ 1063      00000201 
+ARM GAS  C:\Users\ibrah\AppData\Local\Temp\ccmUVnXM.s 			page 22
+
+
+ 1063      FB0E0D00 
+ 1063      01010101 
+ 1064              	.LASF19:
+ 1065 0000 4D505536 		.ascii	"MPU6050_MoveServo1\000"
+ 1065      3035305F 
+ 1065      4D6F7665 
+ 1065      53657276 
+ 1065      6F3100
+ 1066              	.LASF23:
+ 1067 0013 4A6F7973 		.ascii	"Joystick_MoveServo1\000"
+ 1067      7469636B 
+ 1067      5F4D6F76 
+ 1067      65536572 
+ 1067      766F3100 
+ 1068              	.LASF24:
+ 1069 0027 4A6F7973 		.ascii	"Joystick_MoveServo2\000"
+ 1069      7469636B 
+ 1069      5F4D6F76 
+ 1069      65536572 
+ 1069      766F3200 
+ 1070              	.LASF39:
+ 1071 003b 433A5C55 		.ascii	"C:\\Users\\ibrah\\OneDrive\\Desktop\\gimbal_project"
+ 1071      73657273 
+ 1071      5C696272 
+ 1071      61685C4F 
+ 1071      6E654472 
+ 1072 0069 5C47696D 		.ascii	"\\Gimbal\\Gimbal.cydsn\000"
+ 1072      62616C5C 
+ 1072      47696D62 
+ 1072      616C2E63 
+ 1072      7964736E 
+ 1073              	.LASF9:
+ 1074 007e 5F5F696E 		.ascii	"__int32_t\000"
+ 1074      7433325F 
+ 1074      7400
+ 1075              	.LASF26:
+ 1076 0088 706F7465 		.ascii	"potentio_cmd\000"
+ 1076      6E74696F 
+ 1076      5F636D64 
+ 1076      00
+ 1077              	.LASF17:
+ 1078 0095 496E6974 		.ascii	"InitializeServos\000"
+ 1078      69616C69 
+ 1078      7A655365 
+ 1078      72766F73 
+ 1078      00
+ 1079              	.LASF30:
+ 1080 00a6 50574D5F 		.ascii	"PWM_WriteCompare2\000"
+ 1080      57726974 
+ 1080      65436F6D 
+ 1080      70617265 
+ 1080      3200
+ 1081              	.LASF11:
+ 1082 00b8 666C6F61 		.ascii	"float\000"
+ 1082      7400
+ 1083              	.LASF0:
+ 1084 00be 7369676E 		.ascii	"signed char\000"
+ARM GAS  C:\Users\ibrah\AppData\Local\Temp\ccmUVnXM.s 			page 23
+
+
+ 1084      65642063 
+ 1084      68617200 
+ 1085              	.LASF1:
+ 1086 00ca 756E7369 		.ascii	"unsigned char\000"
+ 1086      676E6564 
+ 1086      20636861 
+ 1086      7200
+ 1087              	.LASF37:
+ 1088 00d8 474E5520 		.ascii	"GNU C11 5.4.1 20160609 (release) [ARM/embedded-5-br"
+ 1088      43313120 
+ 1088      352E342E 
+ 1088      31203230 
+ 1088      31363036 
+ 1089 010b 616E6368 		.ascii	"anch revision 237715] -mcpu=cortex-m3 -mthumb -g -O"
+ 1089      20726576 
+ 1089      6973696F 
+ 1089      6E203233 
+ 1089      37373135 
+ 1090 013e 67202D66 		.ascii	"g -ffunction-sections -ffat-lto-objects\000"
+ 1090      66756E63 
+ 1090      74696F6E 
+ 1090      2D736563 
+ 1090      74696F6E 
+ 1091              	.LASF33:
+ 1092 0166 4144435F 		.ascii	"ADC_StartConvert\000"
+ 1092      53746172 
+ 1092      74436F6E 
+ 1092      76657274 
+ 1092      00
+ 1093              	.LASF34:
+ 1094 0177 414D7578 		.ascii	"AMux_Start\000"
+ 1094      5F537461 
+ 1094      727400
+ 1095              	.LASF5:
+ 1096 0182 6C6F6E67 		.ascii	"long unsigned int\000"
+ 1096      20756E73 
+ 1096      69676E65 
+ 1096      6420696E 
+ 1096      7400
+ 1097              	.LASF3:
+ 1098 0194 73686F72 		.ascii	"short unsigned int\000"
+ 1098      7420756E 
+ 1098      7369676E 
+ 1098      65642069 
+ 1098      6E7400
+ 1099              	.LASF25:
+ 1100 01a7 49544D5F 		.ascii	"ITM_RxBuffer\000"
+ 1100      52784275 
+ 1100      66666572 
+ 1100      00
+ 1101              	.LASF12:
+ 1102 01b4 646F7562 		.ascii	"double\000"
+ 1102      6C6500
+ 1103              	.LASF35:
+ 1104 01bb 414D7578 		.ascii	"AMux_Select\000"
+ 1104      5F53656C 
+ 1104      65637400 
+ARM GAS  C:\Users\ibrah\AppData\Local\Temp\ccmUVnXM.s 			page 24
+
+
+ 1105              	.LASF8:
+ 1106 01c7 756E7369 		.ascii	"unsigned int\000"
+ 1106      676E6564 
+ 1106      20696E74 
+ 1106      00
+ 1107              	.LASF7:
+ 1108 01d4 6C6F6E67 		.ascii	"long long unsigned int\000"
+ 1108      206C6F6E 
+ 1108      6720756E 
+ 1108      7369676E 
+ 1108      65642069 
+ 1109              	.LASF29:
+ 1110 01eb 50574D5F 		.ascii	"PWM_WriteCompare1\000"
+ 1110      57726974 
+ 1110      65436F6D 
+ 1110      70617265 
+ 1110      3100
+ 1111              	.LASF38:
+ 1112 01fd 6D6F746F 		.ascii	"motor_control.c\000"
+ 1112      725F636F 
+ 1112      6E74726F 
+ 1112      6C2E6300 
+ 1113              	.LASF32:
+ 1114 020d 4144435F 		.ascii	"ADC_Start\000"
+ 1114      53746172 
+ 1114      7400
+ 1115              	.LASF36:
+ 1116 0217 4144435F 		.ascii	"ADC_Read16\000"
+ 1116      52656164 
+ 1116      313600
+ 1117              	.LASF16:
+ 1118 0222 4D6F7665 		.ascii	"MoveServosToStart\000"
+ 1118      53657276 
+ 1118      6F73546F 
+ 1118      53746172 
+ 1118      7400
+ 1119              	.LASF15:
+ 1120 0234 73697A65 		.ascii	"sizetype\000"
+ 1120      74797065 
+ 1120      00
+ 1121              	.LASF6:
+ 1122 023d 6C6F6E67 		.ascii	"long long int\000"
+ 1122      206C6F6E 
+ 1122      6720696E 
+ 1122      7400
+ 1123              	.LASF13:
+ 1124 024b 63686172 		.ascii	"char\000"
+ 1124      00
+ 1125              	.LASF22:
+ 1126 0250 70697463 		.ascii	"pitch\000"
+ 1126      6800
+ 1127              	.LASF10:
+ 1128 0256 696E7433 		.ascii	"int32_t\000"
+ 1128      325F7400 
+ 1129              	.LASF2:
+ 1130 025e 73686F72 		.ascii	"short int\000"
+ 1130      7420696E 
+ARM GAS  C:\Users\ibrah\AppData\Local\Temp\ccmUVnXM.s 			page 25
+
+
+ 1130      7400
+ 1131              	.LASF31:
+ 1132 0268 50574D5F 		.ascii	"PWM_Start\000"
+ 1132      53746172 
+ 1132      7400
+ 1133              	.LASF21:
+ 1134 0272 726F6C6C 		.ascii	"roll\000"
+ 1134      00
+ 1135              	.LASF20:
+ 1136 0277 4D505536 		.ascii	"MPU6050_MoveServo2\000"
+ 1136      3035305F 
+ 1136      4D6F7665 
+ 1136      53657276 
+ 1136      6F3200
+ 1137              	.LASF4:
+ 1138 028a 6C6F6E67 		.ascii	"long int\000"
+ 1138      20696E74 
+ 1138      00
+ 1139              	.LASF14:
+ 1140 0293 6C6F6E67 		.ascii	"long double\000"
+ 1140      20646F75 
+ 1140      626C6500 
+ 1141              	.LASF18:
+ 1142 029f 4A6F7973 		.ascii	"Joystick_Start\000"
+ 1142      7469636B 
+ 1142      5F537461 
+ 1142      727400
+ 1143              	.LASF27:
+ 1144 02ae 73657276 		.ascii	"servo_cmd_1\000"
+ 1144      6F5F636D 
+ 1144      645F3100 
+ 1145              	.LASF28:
+ 1146 02ba 73657276 		.ascii	"servo_cmd_2\000"
+ 1146      6F5F636D 
+ 1146      645F3200 
+ 1147              		.ident	"GCC: (GNU Tools for ARM Embedded Processors) 5.4.1 20160609 (release) [ARM/embedded-5-bran
