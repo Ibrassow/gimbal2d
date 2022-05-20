@@ -17,7 +17,7 @@
 #include "mpu6050.h"
 #include "motor_control.h"
 #include "utilities.h"
-
+#include "keypad.h"
 
 
 
@@ -81,8 +81,8 @@ int main(void)
         
             
             
-            sw1 = SW1_Read(); 
-            sw2 = SW2_Read();
+            sw1 = SW1_Read(); // Mode change
+            sw2 = SW2_Read(); // Re-calibration
             
             
             if (sw2)
@@ -126,12 +126,23 @@ int main(void)
                     
                     Joystick_MoveServo1();
                     
+                    
+                    
+                    
+                    
+                    
                     // COMMAND SERVO 2
                     
                     Joystick_MoveServo2();
                     
                     break;
                 
+                    
+                    
+                    
+                    
+                    
+                    
                 case 1:
                     
                     ///////// MPU6050 MODE /////////
@@ -166,72 +177,20 @@ int main(void)
                     MPU6050_GetRoll(&roll);
                     MPU6050_GetPitch(&pitch);
                     
+                    
+                    MakeSound(&roll, &pitch);
+                    
+                    
+                    
+                    
+                    
                     break;
                 
             }
             
 
         
-            
-            
-
-            
-            
-            
-            
-            
-            /*
         
-            ///////// JOYSTICK MODE /////////
-            
-            
-            // COMMAND SERVO 1 
-            
-            AMux_Select(0);
-            potentio_cmd = ADC_Read16();
-            servo_cmd_1 = 3800 + (potentio_cmd - 531)*(SERVO1_POT2PWM);
-            
-            if (servo_cmd_1 > 6000)
-            {
-             servo_cmd_1 = 6000;   
-            }
-            else if (servo_cmd_1 < 1200)
-            {
-                servo_cmd_1 = 1200;
-            }
-            
-            sprintf(detect, "1 -- POT:: %d -- SERVO1 %d\n", potentio_cmd, servo_cmd_1);
-            UART_PutString(detect);
-            
-            PWM_WriteCompare1(servo_cmd_1);
-        
-        
-            // COMMAND SERVO 2
-        
-            AMux_Select(1);
-            potentio_cmd = ADC_Read16(); // de base à 551 (0 to 1035)
-            servo_cmd_2 = 2025 + (potentio_cmd - 551)*(SERVO2_POT2PWM);
-            
-            if (servo_cmd_2 > 2850)
-            {
-             servo_cmd_2 = 2850;   
-            }
-            else if (servo_cmd_2 < 1200)
-            {
-                servo_cmd_2 = 1200;
-            }
-            
-            sprintf(detect, "2 -- POT:: %d -- SERVO2 %d\n", potentio_cmd, servo_cmd_2);
-            UART_PutString(detect);
-            
-            PWM_WriteCompare2(servo_cmd_2);
-
-        
-               */
-
-            
-//
-            
 }
 
 }
