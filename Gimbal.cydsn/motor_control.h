@@ -3,13 +3,23 @@
 #define MOTOR_CONTROL_H
 
 
+#include "stdint.h"
+    
+    
 #define SERVO1_POT2PWM 4.6377 // 4800 / 1035
 #define SERVO2_POT2PWM 1.5942 // 1650 / 1035
 
 
 
     
+//void Servos_PreInit();
+
+
+void SetMotorFlags();
     
+    
+
+
 void MoveServosToStart();
 
 void InitializeServos();

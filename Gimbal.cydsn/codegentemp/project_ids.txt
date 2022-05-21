@@ -1,6 +1,6 @@
-C:\Users\ibrah\OneDrive\Desktop\gimbal_project\Gimbal\Gimbal.cydsn\Gimbal.cyprj|917d683b-9957-4f2e-9b00-7f0d69d30a39
-C:\Program Files (x86)\Cypress\PSoC Creator\4.4\PSoC Creator\psoc\content\default\CyAnnotationLibrary\CyAnnotationLibrary.cylib\CyAnnotationLibrary.cyprj|83510a2d-3ea5-4b91-b15b-73b0547f919a
-C:\Users\ibrah\OneDrive\Documents\PSoC Creator\4.4\Downloads ( 4.4).cylib\Downloads ( 4.4).cyprj|701eb69d-7840-4471-bdb3-e48bda22f7ab
-C:\Program Files (x86)\Cypress\PSoC Creator\4.4\PSoC Creator\psoc\content\cycomponentlibraryupdates\CyComponentLibraryUpdates.cylib\CyComponentLibraryUpdates.cyprj|8f5233c5-ba8c-4f40-986c-87c1cb4800af
-C:\Program Files (x86)\Cypress\PSoC Creator\4.4\PSoC Creator\psoc\content\cycomponentlibrary\CyComponentLibrary.cylib\CyComponentLibrary.cyprj|9bc657c0-b196-4608-92f7-c6f4d7c8a439
-C:\Program Files (x86)\Cypress\PSoC Creator\4.4\PSoC Creator\psoc\content\cyprimitives\CyPrimitives.cylib\CyPrimitives.cyprj|1dcb7db0-e424-4402-894d-ebadad381a2c
+C:\dev\gimbal2d\Gimbal.cydsn\Gimbal.cyprj|fe3ba200-e368-43bd-b150-d126b22c8b21
+C:\Program Files (x86)\Cypress\PSoC Creator\4.4\PSoC Creator\psoc\content\default\CyAnnotationLibrary\CyAnnotationLibrary.cylib\CyAnnotationLibrary.cyprj|a3bbf7ff-5332-4381-ae07-567c968b94b5
+C:\Users\ibrah\OneDrive\Documents\PSoC Creator\4.4\Downloads ( 4.4).cylib\Downloads ( 4.4).cyprj|0bab5c8c-5ce1-4ce1-be86-58bb44054178
+C:\Program Files (x86)\Cypress\PSoC Creator\4.4\PSoC Creator\psoc\content\cycomponentlibraryupdates\CyComponentLibraryUpdates.cylib\CyComponentLibraryUpdates.cyprj|218e1b6a-f4be-4d8c-a101-8455ef94010b
+C:\Program Files (x86)\Cypress\PSoC Creator\4.4\PSoC Creator\psoc\content\cycomponentlibrary\CyComponentLibrary.cylib\CyComponentLibrary.cyprj|f10db8c4-48c3-4550-83d8-40ab2da00342
+C:\Program Files (x86)\Cypress\PSoC Creator\4.4\PSoC Creator\psoc\content\cyprimitives\CyPrimitives.cylib\CyPrimitives.cyprj|e291c724-dd2a-4a39-97ba-20ea0052fb4d

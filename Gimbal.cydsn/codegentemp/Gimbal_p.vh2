@@ -1,5 +1,5 @@
 -- Project:   Gimbal
--- Generated: 05/19/2022 16:13:58
+-- Generated: 05/20/2022 21:10:46
 -- PSoC Creator  4.4
 
 ENTITY Gimbal IS
@@ -34,6 +34,7 @@ ENTITY Gimbal IS
 END Gimbal;
 
 ARCHITECTURE __DEFAULT__ OF Gimbal IS
+    SIGNAL Audio_Out(0)__PA : bit;
     SIGNAL ClockBlock_100k : bit;
     SIGNAL ClockBlock_1k : bit;
     SIGNAL ClockBlock_32k : bit;
@@ -54,7 +55,6 @@ ARCHITECTURE __DEFAULT__ OF Gimbal IS
     SIGNAL LED4(0)__PA : bit;
     SIGNAL LargeServo(0)__PA : bit;
     SIGNAL Net_101 : bit;
-    SIGNAL Net_143 : bit;
     SIGNAL Net_248 : bit;
     ATTRIBUTE udbclken_assigned OF Net_248 : SIGNAL IS "True";
     ATTRIBUTE global_signal OF Net_248 : SIGNAL IS true;
@@ -62,6 +62,11 @@ ARCHITECTURE __DEFAULT__ OF Gimbal IS
     SIGNAL Net_287 : bit;
     SIGNAL Net_326 : bit;
     SIGNAL Net_483 : bit;
+    SIGNAL Net_682 : bit;
+    SIGNAL Net_689 : bit;
+    ATTRIBUTE global_signal OF Net_689 : SIGNAL IS true;
+    SIGNAL Net_689_local : bit;
+    SIGNAL Net_691 : bit;
     SIGNAL Net_97 : bit;
     SIGNAL Pin_SCL(0)__PA : bit;
     SIGNAL Pin_SDA(0)__PA : bit;
@@ -124,6 +129,8 @@ ARCHITECTURE __DEFAULT__ OF Gimbal IS
     SIGNAL \PWM:PWMUDB:tc_i\ : bit;
     SIGNAL \Timer:Net_261\ : bit;
     SIGNAL \Timer:Net_51\ : bit;
+    SIGNAL \Timer_Audio:Net_261\ : bit;
+    SIGNAL \Timer_Audio:Net_51\ : bit;
     SIGNAL \UART:BUART:counter_load_not\ : bit;
     SIGNAL \UART:BUART:pollcount_0\ : bit;
     SIGNAL \UART:BUART:pollcount_1\ : bit;
@@ -175,6 +182,7 @@ ARCHITECTURE __DEFAULT__ OF Gimbal IS
     SIGNAL zero : bit;
     ATTRIBUTE GROUND OF zero : SIGNAL IS true;
     SIGNAL \ClockBlock.clk_bus_glb_ff__sig\ : bit;
+    SIGNAL \ClockBlock.dclk_glb_ff_1__sig\ : bit;
     SIGNAL \ClockBlock.aclk_glb_ff_0__sig\ : bit;
     SIGNAL \PWM:PWMUDB:sP16:pwmdp:u0.ce0__sig\ : bit;
     SIGNAL \PWM:PWMUDB:sP16:pwmdp:u0.cl0__sig\ : bit;
@@ -231,6 +239,8 @@ ARCHITECTURE __DEFAULT__ OF Gimbal IS
     ATTRIBUTE Location OF LED4(0) : LABEL IS "P0[6]";
     ATTRIBUTE lib_model OF SW2(0) : LABEL IS "iocell21";
     ATTRIBUTE Location OF SW2(0) : LABEL IS "P12[4]";
+    ATTRIBUTE lib_model OF Audio_Out(0) : LABEL IS "iocell22";
+    ATTRIBUTE Location OF Audio_Out(0) : LABEL IS "P15[5]";
     ATTRIBUTE lib_model OF Net_101 : LABEL IS "macrocell1";
     ATTRIBUTE lib_model OF \UART:BUART:counter_load_not\ : LABEL IS "macrocell2";
     ATTRIBUTE lib_model OF \UART:BUART:tx_status_0\ : LABEL IS "macrocell3";
@@ -251,6 +261,7 @@ ARCHITECTURE __DEFAULT__ OF Gimbal IS
     ATTRIBUTE lib_model OF \PWM:PWMUDB:sP16:pwmdp:u0\ : LABEL IS "datapathcell4";
     ATTRIBUTE lib_model OF \PWM:PWMUDB:sP16:pwmdp:u1\ : LABEL IS "datapathcell5";
     ATTRIBUTE Location OF \ADC:DSM\ : LABEL IS "F(DSM,0)";
+    ATTRIBUTE Location OF \VDAC8:viDAC8\ : LABEL IS "F(VIDAC,0)";
     ATTRIBUTE lib_model OF \UART:BUART:txn\ : LABEL IS "macrocell11";
     ATTRIBUTE lib_model OF \UART:BUART:tx_state_1\ : LABEL IS "macrocell12";
     ATTRIBUTE lib_model OF \UART:BUART:tx_state_0\ : LABEL IS "macrocell13";
@@ -651,6 +662,22 @@ ARCHITECTURE __DEFAULT__ OF Gimbal IS
             cmp : OUT std_ulogic;
             irq : OUT std_ulogic);
     END COMPONENT;
+    COMPONENT vidaccell
+        PORT (
+            data_0 : IN std_ulogic;
+            data_1 : IN std_ulogic;
+            data_2 : IN std_ulogic;
+            data_3 : IN std_ulogic;
+            data_4 : IN std_ulogic;
+            data_5 : IN std_ulogic;
+            data_6 : IN std_ulogic;
+            data_7 : IN std_ulogic;
+            strobe : IN std_ulogic;
+            strobe_udb : IN std_ulogic;
+            reset : IN std_ulogic;
+            idir : IN std_ulogic;
+            ioff : IN std_ulogic);
+    END COMPONENT;
 BEGIN
 
     ClockBlock:clockblockcell
@@ -670,15 +697,18 @@ BEGIN
             dsi_glb_div => open,
             dclk_glb_0 => \ADC:Net_93\,
             dclk_0 => \ADC:Net_93_local\,
-            dclk_glb_1 => Net_248,
-            dclk_1 => Net_248_local,
-            dclk_glb_2 => \UART:Net_9\,
-            dclk_2 => \UART:Net_9_local\,
+            dclk_glb_1 => Net_689,
+            dclk_1 => Net_689_local,
+            dclk_glb_2 => Net_248,
+            dclk_2 => Net_248_local,
+            dclk_glb_3 => \UART:Net_9\,
+            dclk_3 => \UART:Net_9_local\,
             aclk_glb_0 => \ADC:Net_488\,
             aclk_0 => \ADC:Net_488_local\,
             clk_a_dig_glb_0 => \ADC:Net_488_adig\,
             clk_a_dig_0 => \ADC:Net_488_adig_local\,
             clk_bus_glb_ff => \ClockBlock.clk_bus_glb_ff__sig\,
+            dclk_glb_ff_1 => \ClockBlock.dclk_glb_ff_1__sig\,
             aclk_glb_ff_0 => \ClockBlock.aclk_glb_ff_0__sig\);
 
     Rx_1:logicalport
@@ -2157,6 +2187,95 @@ BEGIN
             out_clock_en => '1',
             out_reset => '0');
 
+    Audio_Out:logicalport
+        GENERIC MAP(
+            drive_mode => "000",
+            ibuf_enabled => "0",
+            id => "77715107-f8d5-47e5-a629-0fb83101ac6b",
+            init_dr_st => "0",
+            input_buffer_sel => "00",
+            input_clk_en => 0,
+            input_sync => "1",
+            input_sync_mode => "0",
+            intr_mode => "00",
+            invert_in_clock => 0,
+            invert_in_clock_en => 0,
+            invert_in_reset => 0,
+            invert_out_clock => 0,
+            invert_out_clock_en => 0,
+            invert_out_reset => 0,
+            io_voltage => "",
+            layout_mode => "CONTIGUOUS",
+            oe_conn => "0",
+            oe_reset => 0,
+            oe_sync => "0",
+            output_clk_en => 0,
+            output_clock_mode => "0",
+            output_conn => "0",
+            output_mode => "0",
+            output_reset => 0,
+            output_sync => "0",
+            ovt_hyst_trim => "0",
+            ovt_needed => "0",
+            ovt_slew_control => "00",
+            pa_in_clock => -1,
+            pa_in_clock_en => -1,
+            pa_in_reset => -1,
+            pa_out_clock => -1,
+            pa_out_clock_en => -1,
+            pa_out_reset => -1,
+            pin_aliases => "",
+            pin_mode => "A",
+            por_state => 4,
+            port_alias_group => "",
+            port_alias_required => 0,
+            sio_group_cnt => 0,
+            sio_hifreq => "00000000",
+            sio_hyst => "1",
+            sio_ibuf => "00000000",
+            sio_info => "00",
+            sio_obuf => "00000000",
+            sio_refsel => "00000000",
+            sio_vohsel => "00000000",
+            sio_vtrip => "00000000",
+            slew_rate => "0",
+            spanning => 0,
+            sw_only => 0,
+            use_annotation => "0",
+            vtrip => "10",
+            width => 1,
+            in_clk_inv => 0,
+            in_clken_inv => 0,
+            in_clken_mode => 1,
+            in_rst_inv => 0,
+            out_clk_inv => 0,
+            out_clken_inv => 0,
+            out_clken_mode => 1,
+            out_rst_inv => 0)
+        PORT MAP(
+            in_clock_en => open,
+            in_reset => open,
+            out_clock_en => open,
+            out_reset => open);
+
+    Audio_Out(0):iocell
+        GENERIC MAP(
+            in_sync_mode => 0,
+            out_sync_mode => 0,
+            oe_sync_mode => 0,
+            logicalport => "Audio_Out",
+            logicalport_pin_id => 0,
+            io_capabilities => "0000000000000000000000000000000000000000000000000000000000000010")
+        PORT MAP(
+            pa_out => Audio_Out(0)__PA,
+            oe => open,
+            in_clock => open,
+            in_clock_en => '1',
+            in_reset => '0',
+            out_clock => open,
+            out_clock_en => '1',
+            out_reset => '0');
+
     Net_101:macrocell
         GENERIC MAP(
             eqn_main => "(!main_0)",
@@ -2463,15 +2582,7 @@ BEGIN
             timer_reset => open,
             tc => \Timer:Net_51\,
             cmp => \Timer:Net_261\,
-            irq => Net_143);
-
-    ISR:interrupt
-        GENERIC MAP(
-            int_type => "10",
-            is_nmi => 0)
-        PORT MAP(
-            interrupt => Net_143,
-            clock => ClockBlock_BUS_CLK);
+            irq => Net_682);
 
     \PWM:PWMUDB:genblk1:ctrlreg\:controlcell
         GENERIC MAP(
@@ -2651,6 +2762,45 @@ BEGIN
             ext_start => __ONE__,
             modrst => \ADC:mod_reset\,
             interrupt => Net_483);
+
+    ISR_Audio:interrupt
+        GENERIC MAP(
+            int_type => "10",
+            is_nmi => 0)
+        PORT MAP(
+            interrupt => Net_691,
+            clock => ClockBlock_BUS_CLK);
+
+    \Timer_Audio:TimerHW\:timercell
+        GENERIC MAP(
+            cy_registers => "")
+        PORT MAP(
+            clock => \ClockBlock.dclk_glb_ff_1__sig\,
+            kill => open,
+            enable => __ONE__,
+            capture => open,
+            timer_reset => open,
+            tc => \Timer_Audio:Net_51\,
+            cmp => \Timer_Audio:Net_261\,
+            irq => Net_691);
+
+    ISR:interrupt
+        GENERIC MAP(
+            int_type => "10",
+            is_nmi => 0)
+        PORT MAP(
+            interrupt => Net_682,
+            clock => ClockBlock_BUS_CLK);
+
+    \VDAC8:viDAC8\:vidaccell
+        GENERIC MAP(
+            cy_registers => "",
+            is_all_if_any => 0,
+            reg_data => 0)
+        PORT MAP(
+            reset => open,
+            idir => open,
+            ioff => open);
 
     \UART:BUART:txn\:macrocell
         GENERIC MAP(

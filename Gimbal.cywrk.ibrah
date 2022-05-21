@@ -13,7 +13,7 @@
 <v>Output</v>
 </TreeKeys>
 <TreeStates>
-<CyGuid_2a325b3b-c96a-4e9f-b7a0-2c44ecb5f237 type_name="CyDesigner.Common.Base.Controls.CyTreeViewState" version="1" SelectedNodeId="Gimbal\Gimbal\Header Files\keypad.h">
+<CyGuid_2a325b3b-c96a-4e9f-b7a0-2c44ecb5f237 type_name="CyDesigner.Common.Base.Controls.CyTreeViewState" version="1" SelectedNodeId="">
 <ExpandedNodeIds>
 <v>Gimbal</v>
 <v>Gimbal\Gimbal</v>
@@ -72,7 +72,7 @@
 <v>Gimbal\Gimbal\Generated_Source\PSoC5</v>
 </VisibleNodeIds>
 </CyGuid_2a325b3b-c96a-4e9f-b7a0-2c44ecb5f237>
-<CyGuid_2a325b3b-c96a-4e9f-b7a0-2c44ecb5f237 type_name="CyDesigner.Common.Base.Controls.CyTreeViewState" version="1" SelectedNodeId="">
+<CyGuid_2a325b3b-c96a-4e9f-b7a0-2c44ecb5f237 type_name="CyDesigner.Common.Base.Controls.CyTreeViewState" version="1" SelectedNodeId="Gimbal\Gimbal">
 <ExpandedNodeIds>
 <v>Gimbal</v>
 <v>Gimbal\Gimbal</v>
@@ -102,7 +102,9 @@
 <v>Gimbal\Gimbal\CortexM3\ARM_GCC_541\Debug\Listing Files\ADC_PM.lst</v>
 <v>Gimbal\Gimbal\CortexM3\ARM_GCC_541\Debug\Listing Files\ADC_theACLK.lst</v>
 <v>Gimbal\Gimbal\CortexM3\ARM_GCC_541\Debug\Listing Files\AMux.lst</v>
+<v>Gimbal\Gimbal\CortexM3\ARM_GCC_541\Debug\Listing Files\Audio_Out.lst</v>
 <v>Gimbal\Gimbal\CortexM3\ARM_GCC_541\Debug\Listing Files\Clock.lst</v>
+<v>Gimbal\Gimbal\CortexM3\ARM_GCC_541\Debug\Listing Files\Clock_Audio.lst</v>
 <v>Gimbal\Gimbal\CortexM3\ARM_GCC_541\Debug\Listing Files\Cm3Start.lst</v>
 <v>Gimbal\Gimbal\CortexM3\ARM_GCC_541\Debug\Listing Files\cy_em_eeprom.lst</v>
 <v>Gimbal\Gimbal\CortexM3\ARM_GCC_541\Debug\Listing Files\CyBootAsmGnu.lst</v>
@@ -121,8 +123,10 @@
 <v>Gimbal\Gimbal\CortexM3\ARM_GCC_541\Debug\Listing Files\I2C_MPU6050_PM.lst</v>
 <v>Gimbal\Gimbal\CortexM3\ARM_GCC_541\Debug\Listing Files\I2C_MPU6050_SLAVE.lst</v>
 <v>Gimbal\Gimbal\CortexM3\ARM_GCC_541\Debug\Listing Files\ISR.lst</v>
+<v>Gimbal\Gimbal\CortexM3\ARM_GCC_541\Debug\Listing Files\ISR_Audio.lst</v>
 <v>Gimbal\Gimbal\CortexM3\ARM_GCC_541\Debug\Listing Files\Joystick_X.lst</v>
 <v>Gimbal\Gimbal\CortexM3\ARM_GCC_541\Debug\Listing Files\Joystick_Y.lst</v>
+<v>Gimbal\Gimbal\CortexM3\ARM_GCC_541\Debug\Listing Files\keypad.lst</v>
 <v>Gimbal\Gimbal\CortexM3\ARM_GCC_541\Debug\Listing Files\LargeServo.lst</v>
 <v>Gimbal\Gimbal\CortexM3\ARM_GCC_541\Debug\Listing Files\LCD.lst</v>
 <v>Gimbal\Gimbal\CortexM3\ARM_GCC_541\Debug\Listing Files\LCD_LCDPort.lst</v>
@@ -142,6 +146,8 @@
 <v>Gimbal\Gimbal\CortexM3\ARM_GCC_541\Debug\Listing Files\SW1.lst</v>
 <v>Gimbal\Gimbal\CortexM3\ARM_GCC_541\Debug\Listing Files\SW2.lst</v>
 <v>Gimbal\Gimbal\CortexM3\ARM_GCC_541\Debug\Listing Files\Timer.lst</v>
+<v>Gimbal\Gimbal\CortexM3\ARM_GCC_541\Debug\Listing Files\Timer_Audio.lst</v>
+<v>Gimbal\Gimbal\CortexM3\ARM_GCC_541\Debug\Listing Files\Timer_Audio_PM.lst</v>
 <v>Gimbal\Gimbal\CortexM3\ARM_GCC_541\Debug\Listing Files\Timer_PM.lst</v>
 <v>Gimbal\Gimbal\CortexM3\ARM_GCC_541\Debug\Listing Files\UART.lst</v>
 <v>Gimbal\Gimbal\CortexM3\ARM_GCC_541\Debug\Listing Files\UART_BOOT.lst</v>
@@ -149,6 +155,8 @@
 <v>Gimbal\Gimbal\CortexM3\ARM_GCC_541\Debug\Listing Files\UART_IntClock.lst</v>
 <v>Gimbal\Gimbal\CortexM3\ARM_GCC_541\Debug\Listing Files\UART_PM.lst</v>
 <v>Gimbal\Gimbal\CortexM3\ARM_GCC_541\Debug\Listing Files\utilities.lst</v>
+<v>Gimbal\Gimbal\CortexM3\ARM_GCC_541\Debug\Listing Files\VDAC8.lst</v>
+<v>Gimbal\Gimbal\CortexM3\ARM_GCC_541\Debug\Listing Files\VDAC8_PM.lst</v>
 <v>Gimbal\Gimbal\CortexM3\ARM_GCC_541\Debug\Gimbal.elf</v>
 <v>Gimbal\Gimbal\CortexM3\ARM_GCC_541\Debug\Gimbal.hex</v>
 <v>Gimbal\Gimbal\CortexM3\ARM_GCC_541\Debug\Gimbal.map</v>
@@ -171,7 +179,9 @@
 <v>Gimbal\Gimbal\CortexM3\ARM_GCC_541\Debug\Listing Files\ADC_PM.lst</v>
 <v>Gimbal\Gimbal\CortexM3\ARM_GCC_541\Debug\Listing Files\ADC_theACLK.lst</v>
 <v>Gimbal\Gimbal\CortexM3\ARM_GCC_541\Debug\Listing Files\AMux.lst</v>
+<v>Gimbal\Gimbal\CortexM3\ARM_GCC_541\Debug\Listing Files\Audio_Out.lst</v>
 <v>Gimbal\Gimbal\CortexM3\ARM_GCC_541\Debug\Listing Files\Clock.lst</v>
+<v>Gimbal\Gimbal\CortexM3\ARM_GCC_541\Debug\Listing Files\Clock_Audio.lst</v>
 <v>Gimbal\Gimbal\CortexM3\ARM_GCC_541\Debug\Listing Files\Cm3Start.lst</v>
 <v>Gimbal\Gimbal\CortexM3\ARM_GCC_541\Debug\Listing Files\cy_em_eeprom.lst</v>
 <v>Gimbal\Gimbal\CortexM3\ARM_GCC_541\Debug\Listing Files\CyBootAsmGnu.lst</v>
@@ -190,8 +200,10 @@
 <v>Gimbal\Gimbal\CortexM3\ARM_GCC_541\Debug\Listing Files\I2C_MPU6050_PM.lst</v>
 <v>Gimbal\Gimbal\CortexM3\ARM_GCC_541\Debug\Listing Files\I2C_MPU6050_SLAVE.lst</v>
 <v>Gimbal\Gimbal\CortexM3\ARM_GCC_541\Debug\Listing Files\ISR.lst</v>
+<v>Gimbal\Gimbal\CortexM3\ARM_GCC_541\Debug\Listing Files\ISR_Audio.lst</v>
 <v>Gimbal\Gimbal\CortexM3\ARM_GCC_541\Debug\Listing Files\Joystick_X.lst</v>
 <v>Gimbal\Gimbal\CortexM3\ARM_GCC_541\Debug\Listing Files\Joystick_Y.lst</v>
+<v>Gimbal\Gimbal\CortexM3\ARM_GCC_541\Debug\Listing Files\keypad.lst</v>
 <v>Gimbal\Gimbal\CortexM3\ARM_GCC_541\Debug\Listing Files\LargeServo.lst</v>
 <v>Gimbal\Gimbal\CortexM3\ARM_GCC_541\Debug\Listing Files\LCD.lst</v>
 <v>Gimbal\Gimbal\CortexM3\ARM_GCC_541\Debug\Listing Files\LCD_LCDPort.lst</v>
@@ -201,10 +213,6 @@
 <v>Gimbal\Gimbal\CortexM3\ARM_GCC_541\Debug\Listing Files\LED3.lst</v>
 <v>Gimbal\Gimbal\CortexM3\ARM_GCC_541\Debug\Listing Files\LED4.lst</v>
 <v>Gimbal\Gimbal\CortexM3\ARM_GCC_541\Debug\Listing Files\main.lst</v>
-<v>Gimbal\Gimbal\CortexM3\ARM_GCC_541\Debug\Listing Files\motor_control.lst</v>
-<v>Gimbal\Gimbal\CortexM3\ARM_GCC_541\Debug\Listing Files\mpu6050.lst</v>
-<v>Gimbal\Gimbal\CortexM3\ARM_GCC_541\Debug\Listing Files\Pin_SCL.lst</v>
-<v>Gimbal\Gimbal\CortexM3\ARM_GCC_541\Debug\Listing Files\Pin_SDA.lst</v>
 </VisibleNodeIds>
 </CyGuid_2a325b3b-c96a-4e9f-b7a0-2c44ecb5f237>
 </TreeStates>
@@ -226,14 +234,18 @@
 <v>Gimbal\Gimbal\cy_clock_v2_20</v>
 <v>Gimbal\Gimbal\cy_clock_v2_20\cy_clock_v2_20.pdf</v>
 <v>Gimbal\Gimbal\cy_constant_v1_0.pdf</v>
-<v>Gimbal\Gimbal\cy_isr_v1_70.pdf</v>
+<v>Gimbal\Gimbal\cy_isr_v1_70</v>
+<v>Gimbal\Gimbal\cy_isr_v1_70\cy_isr_v1_70.pdf</v>
 <v>Gimbal\Gimbal\cy_pins_v2_20</v>
 <v>Gimbal\Gimbal\cy_pins_v2_20\cy_pins_v2_20.pdf</v>
 <v>Gimbal\Gimbal\I2C_v3_50.pdf</v>
 <v>Gimbal\Gimbal\PWM_v3_30.pdf</v>
-<v>Gimbal\Gimbal\Timer_v2_80.pdf</v>
+<v>Gimbal\Gimbal\Timer_v2_80</v>
+<v>Gimbal\Gimbal\Timer_v2_80\Timer_v2_80.pdf</v>
 <v>Gimbal\Gimbal\UART_v2_50.pdf</v>
-<v>Gimbal\Gimbal\ZeroTerminal.pdf</v>
+<v>Gimbal\Gimbal\VDAC8_v1_90.pdf</v>
+<v>Gimbal\Gimbal\ZeroTerminal</v>
+<v>Gimbal\Gimbal\ZeroTerminal\ZeroTerminal.pdf</v>
 </ExpandedNodeIds>
 <VisibleNodeIds>
 <v>Gimbal</v>
@@ -248,14 +260,18 @@
 <v>Gimbal\Gimbal\cy_clock_v2_20</v>
 <v>Gimbal\Gimbal\cy_clock_v2_20\cy_clock_v2_20.pdf</v>
 <v>Gimbal\Gimbal\cy_constant_v1_0.pdf</v>
-<v>Gimbal\Gimbal\cy_isr_v1_70.pdf</v>
+<v>Gimbal\Gimbal\cy_isr_v1_70</v>
+<v>Gimbal\Gimbal\cy_isr_v1_70\cy_isr_v1_70.pdf</v>
 <v>Gimbal\Gimbal\cy_pins_v2_20</v>
 <v>Gimbal\Gimbal\cy_pins_v2_20\cy_pins_v2_20.pdf</v>
 <v>Gimbal\Gimbal\I2C_v3_50.pdf</v>
 <v>Gimbal\Gimbal\PWM_v3_30.pdf</v>
-<v>Gimbal\Gimbal\Timer_v2_80.pdf</v>
+<v>Gimbal\Gimbal\Timer_v2_80</v>
+<v>Gimbal\Gimbal\Timer_v2_80\Timer_v2_80.pdf</v>
 <v>Gimbal\Gimbal\UART_v2_50.pdf</v>
-<v>Gimbal\Gimbal\ZeroTerminal.pdf</v>
+<v>Gimbal\Gimbal\VDAC8_v1_90.pdf</v>
+<v>Gimbal\Gimbal\ZeroTerminal</v>
+<v>Gimbal\Gimbal\ZeroTerminal\ZeroTerminal.pdf</v>
 </VisibleNodeIds>
 </CyGuid_2a325b3b-c96a-4e9f-b7a0-2c44ecb5f237>
 </TreeStatesV2>
@@ -265,15 +281,14 @@
 </CyGuid_fdba8dfd-b15b-4469-9bbb-9e40c3e70997>
 <Unloaded />
 <OpenDocs>
-<name v=".\Gimbal.cydsn\Gimbal.cydwr" />
-<name v=".\Gimbal.cydsn\TopDesign\TopDesign.cysch" />
 <name v=".\Gimbal.cydsn\main.c" />
-<name v=".\Gimbal.cydsn\mpu6050.h" />
-<name v=".\Gimbal.cydsn\mpu6050.c" />
 <name v=".\Gimbal.cydsn\motor_control.h" />
 <name v=".\Gimbal.cydsn\motor_control.c" />
+<name v=".\Gimbal.cydsn\mpu6050.c" />
+<name v=".\Gimbal.cydsn\mpu6050.h" />
 <name v=".\Gimbal.cydsn\utilities.h" />
 <name v=".\Gimbal.cydsn\utilities.c" />
+<name v=".\Gimbal.cydsn\Gimbal.cydwr" />
 </OpenDocs>
 <OpenDocsLayout><![CDATA[<?xml version="1.0"?><!--
 
@@ -281,7 +296,7 @@
   Copyright (c) 2001-2016 Actipro Software LLC.  All rights reserved.
   http://www.actiprosoftware.com
 
---><DocumentLayout Version="1.0"><LayoutData><TabbedMdiRootContainer Orientation="Horizontal"><TabbedMdiContainer Size="1361, 626" SelectedTabbedMdiWindow="65a82184-a4fb-452b-99dc-54e2919fb074"><ToolWindow Key="Start Page:bd4649ab-da6b-4d04-a663-c722b8bf99db:Start Page" Guid="709143c8-ce1c-4d0c-9dd6-7e8fe962eabd" /><DocumentWindow Key="C:\Users\ibrah\OneDrive\Desktop\gimbal_project\Gimbal\Gimbal.cydsn\Gimbal.cydwr" Guid="40b7d8f2-c392-4da9-9856-6a7c2bf2c646" /><DocumentWindow Key="C:\Users\ibrah\OneDrive\Desktop\gimbal_project\Gimbal\Gimbal.cydsn\TopDesign\TopDesign.cysch" Guid="65a82184-a4fb-452b-99dc-54e2919fb074" /><DocumentWindow Key="C:\Users\ibrah\OneDrive\Desktop\gimbal_project\Gimbal\Gimbal.cydsn\main.c" Guid="eadb736c-9490-4674-8fb7-917481e7ba2f" /><DocumentWindow Key="C:\Users\ibrah\OneDrive\Desktop\gimbal_project\Gimbal\Gimbal.cydsn\mpu6050.h" Guid="49d6aba6-e57f-4c63-8ce4-3c88c75882fc" /><DocumentWindow Key="C:\Users\ibrah\OneDrive\Desktop\gimbal_project\Gimbal\Gimbal.cydsn\mpu6050.c" Guid="950af941-4ffb-4c89-8c09-04b4c1840b93" /><DocumentWindow Key="C:\Users\ibrah\OneDrive\Desktop\gimbal_project\Gimbal\Gimbal.cydsn\motor_control.h" Guid="e803b26b-7079-49c1-9ee4-07cec5d1fa3e" /><DocumentWindow Key="C:\Users\ibrah\OneDrive\Desktop\gimbal_project\Gimbal\Gimbal.cydsn\motor_control.c" Guid="7787652a-3f8b-4f86-86d8-976f3970a3e1" /><DocumentWindow Key="C:\Users\ibrah\OneDrive\Desktop\gimbal_project\Gimbal\Gimbal.cydsn\utilities.h" Guid="d20e74ec-0425-4a42-a8e0-f89d315c20b0" /><DocumentWindow Key="C:\Users\ibrah\OneDrive\Desktop\gimbal_project\Gimbal\Gimbal.cydsn\utilities.c" Guid="409149f3-fdd3-4142-9467-beb6c8d94fd6" /></TabbedMdiContainer></TabbedMdiRootContainer><FloatingContainers /></LayoutData></DocumentLayout>]]></OpenDocsLayout>
+--><DocumentLayout Version="1.0"><LayoutData><TabbedMdiRootContainer Orientation="Horizontal"><TabbedMdiContainer Size="1645, 696" SelectedTabbedMdiWindow="19a25632-cc3b-4bc8-9772-1998d51bcd59"><ToolWindow Key="Start Page:bd4649ab-da6b-4d04-a663-c722b8bf99db:Start Page" Guid="709143c8-ce1c-4d0c-9dd6-7e8fe962eabd" /><DocumentWindow Key="C:\dev\gimbal2d\Gimbal.cydsn\main.c" Guid="19a25632-cc3b-4bc8-9772-1998d51bcd59" /><DocumentWindow Key="C:\dev\gimbal2d\Gimbal.cydsn\motor_control.h" Guid="329ff2d6-385b-4c50-96e1-76abd73aa5cb" /><DocumentWindow Key="C:\dev\gimbal2d\Gimbal.cydsn\motor_control.c" Guid="46f624e6-208a-4c06-84d7-10d4785e3681" /><DocumentWindow Key="C:\dev\gimbal2d\Gimbal.cydsn\mpu6050.c" Guid="b7d6f5c9-3540-4cb4-8bfc-7fd19e401320" /><DocumentWindow Key="C:\dev\gimbal2d\Gimbal.cydsn\mpu6050.h" Guid="ce83edfd-bbbe-4b81-8a10-0578f7d7e97d" /><DocumentWindow Key="C:\dev\gimbal2d\Gimbal.cydsn\utilities.h" Guid="7f7125cc-35b2-4c97-8dea-0c7abbbd85a6" /><DocumentWindow Key="C:\dev\gimbal2d\Gimbal.cydsn\utilities.c" Guid="f51824f4-336e-41c8-970b-f3b72ef0a17d" /><DocumentWindow Key="C:\dev\gimbal2d\Gimbal.cydsn\Gimbal.cydwr" Guid="0d4b35d5-e39a-472b-aa13-b9eda6ceb6e6" /></TabbedMdiContainer></TabbedMdiRootContainer><FloatingContainers /></LayoutData></DocumentLayout>]]></OpenDocsLayout>
 <config v="" />
 <AutoUpdate v="true" />
 </CyGuid_843a90a4-0c4b-4e44-991d-05e7fb117a21>

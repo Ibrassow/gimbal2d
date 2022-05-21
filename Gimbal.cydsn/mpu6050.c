@@ -6,6 +6,7 @@
 
 #include <project.h>
 #include "mpu6050.h"
+#include "motor_control.h"
 
 
 static uint8_t i2c_buffer[22];
@@ -30,7 +31,7 @@ static struct Data data;
 static uint8_t MPU6050_flag;
 
 
-static unsigned int counter;
+static unsigned int counter = 0;
 static int counter_started = 0;
 static float elapsed_time = 0;
 
@@ -38,6 +39,8 @@ static float elapsed_time = 0;
 uint8_t MPU6050_is_calibrated = FALSE;
 
 
+
+static uint16_t motor_counter = 0;
 
 
 // Gyro max sample rate --> 8 kHz
@@ -49,23 +52,27 @@ CY_ISR(ISR_1_Handler) // MPU6050_SAMPLE_PERIOD_S
     if (counter_started == 1)
     {
         counter++;
+        motor_counter++;
+        
+        if (motor_counter == 20)
+        {
+            SetMotorFlags();
+            motor_counter = 0;
+        }
+        
     }
     
     MPU6050_flag = TRUE;
     Timer_ReadStatusRegister();
+    
+
+    
 }
-
-
-
-
-
-
-
 
 
 static void GetElapsedTimeS(float *elapsed_t)
 {
-    *elapsed_t = (float)counter / 1000.0;   
+    *elapsed_t = (float)counter / 1000.0;  
 }
 
 
@@ -74,9 +81,6 @@ void ResetCounter()
 {
     counter = 0;
 }
-
-
-
 
 
 
@@ -198,8 +202,9 @@ void MPU6050_Calibrate(){
     data.gx_angle = 0;
     data.gy_angle = 0;
     data.gz_angle = 0;
+    
 
-    int32_t n_calib = 2000;
+    /*int32_t n_calib = 2000;
     
     for (int32_t i = 0; i < n_calib; i++) {
         
@@ -221,14 +226,65 @@ void MPU6050_Calibrate(){
     calib.az_offset /= n_calib; 
     calib.gx_offset /= n_calib; 
     calib.gy_offset /= n_calib; 
-    calib.gz_offset /= n_calib; 
+    calib.gz_offset /= n_calib; */
+    
+    /*calib.ax_offset -= 10939; 
+    calib.ay_offset += 9367; 
+    calib.az_offset -= 32766; 
+    calib.gx_offset += 440; 
+    calib.gy_offset += 333; 
+    calib.gz_offset += 956;*/
     
     
+     calib.ax_offset -= 11007; 
+    calib.ay_offset += 10018; 
+    calib.az_offset -= 32746; 
+    calib.gx_offset += 433; 
+    calib.gy_offset += 357; 
+    calib.gz_offset += 1642;
+
     
+    /*char test[50];
+    sprintf(test, "AX OFFSET :: %d \n", calib.ax_offset);
+    UART_PutString(test) ;
+    
+    sprintf(test, "AY OFFSET :: %d\n", calib.ay_offset);
+    UART_PutString(test) ;
+    
+    sprintf(test, "AZ OFFSET :: %d\n", calib.az_offset);
+    UART_PutString(test) ;
+    
+    sprintf(test, "GX OFFSET :: %d\n", calib.gx_offset);
+    UART_PutString(test) ;
+    
+    sprintf(test, "GY OFFSET :: %d\n", calib.gy_offset);
+    UART_PutString(test) ;
+    
+    sprintf(test, "GZ OFFSET :: %d\n", calib.gz_offset);
+    UART_PutString(test) ;*/
+    
+    
+
     MPU6050_is_calibrated = TRUE;
     UART_PutString("CALIBRATION DONE!\n");
 
 }
+
+
+
+
+void GetValuesFromCalib(int32_t *calib_array)
+{
+    calib_array[0] = calib.ax_offset;
+    calib_array[1] = calib.ay_offset;
+    calib_array[2] = calib.az_offset;
+    calib_array[3] = calib.gx_offset;
+    calib_array[4] = calib.gy_offset;
+    calib_array[5] = calib.gz_offset;
+
+}
+
+
 
 
 
@@ -245,6 +301,10 @@ uint8_t MPU6050_DataAvailable()
 {
     return MPU6050_flag;
 }
+
+
+
+float alpha = 0.75;
 
 
 
@@ -286,28 +346,31 @@ void MPU6050_ReadData()
     data.gy_angle = data.gy_angle + data.gy * elapsed_time;
     //data->gz_angle = data->gz_angle + data->gz * elapsed_time;
     
-
     // Complementary filter
     data.roll = data.gx_angle * 0.98 + data.ax * 0.02;   
     data.pitch = data.gy_angle * 0.98 + data.ay * 0.02;        
     
 
+    
 }
 
 
 
-void MPU6050_GetRoll(float* roll)
+void MPU6050_GetData(float* roll, float* pitch)
 {
+     
+
+
+    
+    
+    MPU6050_ReadData();
+    
+    
+    
     *roll = data.roll;
-}
-
-
-void MPU6050_GetPitch(float* pitch)
-{
     *pitch = data.pitch;
+    
 }
-
-
 
 
 void MPU6050_PrintRawData()

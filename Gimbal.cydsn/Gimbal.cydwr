@@ -262,6 +262,7 @@
       <Data key="871e698c-a175-4943-a741-4235de272f06" value="SW2" />
       <Data key="881a575c-06d2-421e-ba90-a54c199db685" value="LED3" />
       <Data key="1425177d-0d0e-4468-8bcc-e638e5509a9b" value="Rx_1" />
+      <Data key="77715107-f8d5-47e5-a629-0fb83101ac6b" value="Audio_Out" />
       <Data key="aaca040e-09ef-4a3b-8638-9d2fbdbcd462" value="Joystick_Y" />
       <Data key="b65c6fca-8eb9-486c-af6c-8a6e34ee0543" value="LED2" />
       <Data key="b4357170-9db3-4ef4-a271-bb2a8deeecd3" value="LED1" />
@@ -3431,6 +3432,11 @@
     <Group key="1425177d-0d0e-4468-8bcc-e638e5509a9b">
       <Group key="0">
         <Data key="Port Format" value="15,2" />
+      </Group>
+    </Group>
+    <Group key="77715107-f8d5-47e5-a629-0fb83101ac6b">
+      <Group key="0">
+        <Data key="Port Format" value="15,5" />
       </Group>
     </Group>
     <Group key="aaca040e-09ef-4a3b-8638-9d2fbdbcd462">

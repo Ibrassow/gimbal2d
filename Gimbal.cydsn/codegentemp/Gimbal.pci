@@ -1,5 +1,5 @@
 # Gimbal
-# 2022-05-19 14:13:58Z
+# 2022-05-20 19:10:46Z
 
 # IO_0@[IOP=(1)][IoId=(0)] is reserved: SWDDebugEnabled
 dont_use_io iocell 1 0
@@ -28,4 +28,6 @@ set_io "LED2(0)" iocell 0 1
 set_io "LED3(0)" iocell 0 5
 set_io "LED4(0)" iocell 0 6
 set_io "SW2(0)" iocell 12 4
+set_io "Audio_Out(0)" iocell 15 5
 set_location "\ADC:DSM\" dsmodcell -1 -1 0
+set_location "\VDAC8:viDAC8\" vidaccell -1 -1 0

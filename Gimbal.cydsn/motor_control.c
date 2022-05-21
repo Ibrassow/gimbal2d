@@ -1,12 +1,31 @@
-#include <project.h>
+#include "stdlib.h"
+#include <stdio.h>
 
+#include <project.h>
 #include "motor_control.h"
+
+
+#define THRESHOLD 0
 
 
 
 int potentio_cmd = 0;
 int servo_cmd_1 = 0;
 int servo_cmd_2 = 0;
+
+
+int servo_previous_cmd_1 = 0;
+int servo_previous_cmd_2 = 0;
+
+
+
+static uint8_t Servos_1_flag;
+static uint8_t Servos_2_flag;
+
+
+static unsigned int counter = 0;
+static int counter_started = 0;
+static float elapsed_time = 0;
 
 
 
@@ -22,11 +41,14 @@ void MoveServosToStart()
 void InitializeServos()
 {
     
-    PWM_Start();
-    MoveServosToStart();
 
-    
+    PWM_Start();
+    counter_started = 1; 
+    MoveServosToStart();
 }
+
+
+
 
 
 
@@ -39,12 +61,39 @@ void Joystick_Start()
     AMux_Start();
     
 }
-    
 
+
+
+void SetMotorFlags()
+{
+    
+    Servos_1_flag = 1;
+    Servos_2_flag = 1;
+    
+    
+}
+
+
+char detect[50];
+
+
+static int threshold_angle = 0;
+
+
+// little servo
 void MPU6050_MoveServo1(float* roll)
 {
-        servo_cmd_1 = 3800 - *roll / 0.0375;
-            
+    
+    
+    //((abs(servo_cmd_1 - servo_previous_cmd_1) > THRESHOLD) && 
+    //(abs((int)(*roll - previous_roll))
+    if ((Servos_1_flag == 1) && (abs((int)*roll) > threshold_angle))
+    {
+        
+
+        potentio_cmd = (int)((*roll + 90.0)*5.9);
+        servo_cmd_1 = 3800 + ( potentio_cmd - 531.0)*(SERVO1_POT2PWM);
+        
         if (servo_cmd_1 > 6000)
         {
          servo_cmd_1 = 6000;   
@@ -55,18 +104,45 @@ void MPU6050_MoveServo1(float* roll)
         }
         PWM_WriteCompare1(servo_cmd_1);
         
+        int servo_previous_cmd_1 = servo_cmd_1;
+        Servos_1_flag = 0;
         
-        /*sprintf(detect, "1 -- POT:: %d -- SERVO1 %d\n", cmd, servo_cmd_1);
-        UART_PutString(detect);*/ 
+        
+        
+        //sprintf(detect, "ROLL :: %d  ---- SERVO 111 --> %d\n", (int)*roll, servo_cmd_1);
+        //UART_PutString(detect); 
+        
+
+        
+    }
+    
+    
+    
+            
+
+        
+        
+
 }
 
 
 
-
+// Big servo
 void MPU6050_MoveServo2(float* pitch)
 {
 
-        servo_cmd_2 = 2025 - *pitch / 0.0375;
+        
+    
+    //(abs(servo_cmd_2 - servo_previous_cmd_2) > THRESHOLD) && 
+    if ((Servos_2_flag == 1) && (abs((int)*pitch) > threshold_angle))
+    {
+        
+         /// 0.0375
+        //servo_cmd_2 = (2025 - *pitch * 26.666);
+         potentio_cmd = (int)((*pitch + 90.0f)*6.1222);
+        servo_cmd_2 = 2025 + (potentio_cmd  - 551)*(SERVO2_POT2PWM);
+        
+
         
         if (servo_cmd_2 > 2850)
         {
@@ -78,10 +154,19 @@ void MPU6050_MoveServo2(float* pitch)
         }
         
         PWM_WriteCompare2(servo_cmd_2);
+        
+        
+        int servo_previous_cmd_2 = servo_cmd_2;
+        Servos_2_flag = 0;
     
-        /*sprintf(detect, "2 -- POT:: %d -- SERVO2 %d\n", potentio_cmd, servo_cmd_2);
-        UART_PutString(detect);*/
-
+        /*sprintf(detect, "SERVO 222 --> %d\n", servo_cmd_2);
+        UART_PutString(detect); */
+        
+    }
+    
+    
+    
+    
 }
 
 
@@ -108,8 +193,7 @@ void Joystick_MoveServo1()
         
         /*sprintf(detect, "1 -- POT:: %d -- SERVO1 %d\n", cmd, servo_cmd_1);
         UART_PutString(detect);
-        
-         */ 
+        */ 
     
 }
 

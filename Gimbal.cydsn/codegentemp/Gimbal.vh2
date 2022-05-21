@@ -2,7 +2,7 @@
 --	Conversion of Gimbal.v to vh2:
 --
 --	Cypress Semiconductor - WARP Version 6.3 IR 41
---	Thu May 19 16:13:57 2022
+--	Fri May 20 21:10:44 2022
 --
 
 USE cypress.cypress.all;
@@ -403,9 +403,10 @@ SIGNAL \Timer:Net_266\ : bit;
 SIGNAL \Timer:Net_51\ : bit;
 SIGNAL \Timer:Net_261\ : bit;
 SIGNAL \Timer:Net_57\ : bit;
-SIGNAL Net_143 : bit;
+SIGNAL Net_682 : bit;
 SIGNAL Net_144 : bit;
 SIGNAL \Timer:Net_102\ : bit;
+SIGNAL Net_692 : bit;
 SIGNAL \LCD:tmpOE__LCDPort_net_6\ : bit;
 SIGNAL \LCD:tmpOE__LCDPort_net_5\ : bit;
 SIGNAL \LCD:tmpOE__LCDPort_net_4\ : bit;
@@ -944,6 +945,25 @@ SIGNAL tmpFB_0__SW2_net_0 : bit;
 SIGNAL tmpIO_0__SW2_net_0 : bit;
 TERMINAL tmpSIOVREF__SW2_net_0 : bit;
 SIGNAL tmpINTERRUPT_0__SW2_net_0 : bit;
+SIGNAL Net_691 : bit;
+SIGNAL Net_689 : bit;
+SIGNAL \Timer_Audio:Net_260\ : bit;
+SIGNAL \Timer_Audio:Net_266\ : bit;
+SIGNAL \Timer_Audio:Net_51\ : bit;
+SIGNAL \Timer_Audio:Net_261\ : bit;
+SIGNAL \Timer_Audio:Net_57\ : bit;
+SIGNAL Net_693 : bit;
+SIGNAL \Timer_Audio:Net_102\ : bit;
+SIGNAL \VDAC8:Net_83\ : bit;
+SIGNAL \VDAC8:Net_81\ : bit;
+SIGNAL \VDAC8:Net_82\ : bit;
+TERMINAL Net_707 : bit;
+TERMINAL \VDAC8:Net_77\ : bit;
+SIGNAL tmpOE__Audio_Out_net_0 : bit;
+SIGNAL tmpFB_0__Audio_Out_net_0 : bit;
+SIGNAL tmpIO_0__Audio_Out_net_0 : bit;
+TERMINAL tmpSIOVREF__Audio_Out_net_0 : bit;
+SIGNAL tmpINTERRUPT_0__Audio_Out_net_0 : bit;
 SIGNAL \UART:BUART:reset_reg\\D\ : bit;
 SIGNAL \UART:BUART:txn\\D\ : bit;
 SIGNAL \UART:BUART:tx_state_1\\D\ : bit;
@@ -1760,11 +1780,7 @@ timer_clock:cy_clock_v1_0
 		timer_reset=>zero,
 		tc=>\Timer:Net_51\,
 		compare=>\Timer:Net_261\,
-		interrupt=>Net_143);
-ISR:cy_isr_v1_0
-	GENERIC MAP(int_type=>"10",
-		is_nmi=>'0')
-	PORT MAP(int_signal=>Net_143);
+		interrupt=>Net_682);
 \LCD:LCDPort\:cy_psoc3_pins_v1_10
 	GENERIC MAP(id=>"67ecd2d5-4385-4bf4-9d79-b5b80dcb99fc/ed092b9b-d398-4703-be89-cebf998501f6",
 		drive_mode=>"110110110110110110110",
@@ -2872,6 +2888,119 @@ SW2:cy_psoc3_pins_v1_10
 		out_clock_en=>tmpOE__Rx_1_net_0,
 		out_reset=>zero,
 		interrupt=>tmpINTERRUPT_0__SW2_net_0);
+ISR_Audio:cy_isr_v1_0
+	GENERIC MAP(int_type=>"10",
+		is_nmi=>'0')
+	PORT MAP(int_signal=>Net_691);
+\Timer_Audio:TimerHW\:cy_psoc3_timer_v1_0
+	GENERIC MAP(cy_registers=>"")
+	PORT MAP(clock=>Net_689,
+		kill=>zero,
+		enable=>tmpOE__Rx_1_net_0,
+		capture=>zero,
+		timer_reset=>zero,
+		tc=>\Timer_Audio:Net_51\,
+		compare=>\Timer_Audio:Net_261\,
+		interrupt=>Net_691);
+Clock_Audio:cy_clock_v1_0
+	GENERIC MAP(cy_registers=>"",
+		id=>"eff6470f-d616-4cc5-85b3-ac971ed638bc",
+		source_clock_id=>"61737EF6-3B74-48f9-8B91-F7473A442AE7",
+		divisor=>4,
+		period=>"0",
+		is_direct=>'0',
+		is_digital=>'1')
+	PORT MAP(clock_out=>Net_689,
+		dig_domain_out=>open);
+ISR:cy_isr_v1_0
+	GENERIC MAP(int_type=>"10",
+		is_nmi=>'0')
+	PORT MAP(int_signal=>Net_682);
+\VDAC8:viDAC8\:cy_psoc3_vidac8_v1_0
+	GENERIC MAP(cy_registers=>"",
+		reg_data=>'0',
+		is_all_if_any=>'0')
+	PORT MAP(reset=>zero,
+		idir=>zero,
+		ioff=>zero,
+		data=>(zero, zero, zero, zero,
+			zero, zero, zero, zero),
+		strobe=>zero,
+		strobe_udb=>zero,
+		vout=>Net_707,
+		iout=>\VDAC8:Net_77\);
+\VDAC8:cy_analog_noconnect_1\:cy_analog_noconnect_v1_0
+	PORT MAP(noconnect=>\VDAC8:Net_77\);
+Audio_Out:cy_psoc3_pins_v1_10
+	GENERIC MAP(id=>"77715107-f8d5-47e5-a629-0fb83101ac6b",
+		drive_mode=>"000",
+		ibuf_enabled=>"0",
+		init_dr_st=>"0",
+		input_sync=>"1",
+		input_clk_en=>'0',
+		input_sync_mode=>"0",
+		intr_mode=>"00",
+		invert_in_clock=>'0',
+		invert_in_clock_en=>'0',
+		invert_in_reset=>'0',
+		invert_out_clock=>'0',
+		invert_out_clock_en=>'0',
+		invert_out_reset=>'0',
+		io_voltage=>"",
+		layout_mode=>"CONTIGUOUS",
+		output_conn=>"0",
+		output_sync=>"0",
+		output_clk_en=>'0',
+		output_mode=>"0",
+		output_reset=>'0',
+		output_clock_mode=>"0",
+		oe_sync=>"0",
+		oe_conn=>"0",
+		oe_reset=>'0',
+		pin_aliases=>"",
+		pin_mode=>"A",
+		por_state=>4,
+		sio_group_cnt=>0,
+		sio_hifreq=>"00000000",
+		sio_hyst=>"1",
+		sio_ibuf=>"00000000",
+		sio_info=>"00",
+		sio_obuf=>"00000000",
+		sio_refsel=>"00000000",
+		sio_vtrip=>"00000000",
+		sio_vohsel=>"00000000",
+		slew_rate=>"0",
+		spanning=>'0',
+		sw_only=>'0',
+		vtrip=>"10",
+		width=>1,
+		port_alias_required=>'0',
+		port_alias_group=>"",
+		use_annotation=>"0",
+		pa_in_clock=>-1,
+		pa_in_clock_en=>-1,
+		pa_in_reset=>-1,
+		pa_out_clock=>-1,
+		pa_out_clock_en=>-1,
+		pa_out_reset=>-1,
+		ovt_needed=>"0",
+		ovt_slew_control=>"00",
+		ovt_hyst_trim=>"0",
+		input_buffer_sel=>"00")
+	PORT MAP(oe=>(tmpOE__Rx_1_net_0),
+		y=>(zero),
+		fb=>(tmpFB_0__Audio_Out_net_0),
+		analog=>Net_707,
+		io=>(tmpIO_0__Audio_Out_net_0),
+		siovref=>(tmpSIOVREF__Audio_Out_net_0),
+		annotation=>(open),
+		in_clock=>zero,
+		in_clock_en=>tmpOE__Rx_1_net_0,
+		in_reset=>zero,
+		out_clock=>zero,
+		out_clock_en=>tmpOE__Rx_1_net_0,
+		out_reset=>zero,
+		interrupt=>tmpINTERRUPT_0__Audio_Out_net_0);
 \UART:BUART:reset_reg\:cy_dff
 	PORT MAP(d=>zero,
 		clk=>\UART:BUART:clock_op\,

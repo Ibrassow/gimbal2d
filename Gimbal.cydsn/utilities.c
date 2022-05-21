@@ -1,22 +1,53 @@
 #include <project.h>
 #include <stdio.h>
-
+#include "math.h"
 
 #include "utilities.h"
 
+char lcd_orientation[50] = {0};
+
+static uint16 counter = 0;
+static float N = 1000;
+static float vec_sine[1000]; 
+static float val_out;
+static double freq = 2*M_PI;
+static int harm = 1;
+
+
+CY_ISR(ISR_Audio_Handler)
+{
+    val_out = 128 +128*vec_sine[counter];
+    VDAC8_SetValue(val_out);
+    counter = counter + harm;
+    Timer_ReadStatusRegister();   
+}
 
 
 
 
-char orientation[50] = {0};
+void Audio_Init()
+{
+    
+    
+    
+    ISR_Audio_StartEx(ISR_Audio_Handler);
+    Timer_Audio_Start();
+    VDAC8_Start();
+    
+    for (int i = 0; i < N; i++){
+        vec_sine[i] = sin((freq*i)/N);
+    }
+    
+}
 
 
+    
+void MakeSound(float* roll, float* pitch)
+{
+    harm = (int)*roll + (int)*pitch;
+}
 
 
-uint8 led1_state = 0;
-uint8 led2_state = 0;
-uint8 led3_state = 0;
-uint8 led4_state = 0;
 
 
 
@@ -24,12 +55,9 @@ uint8 led4_state = 0;
 void LCD_PrintOrientation(float* roll, float* pitch)
 {   
 
-    char orientation[30] = {0};
-    
     LCD_ClearDisplay();
-
-    sprintf(orientation, "%d/%d", (int)*roll, (int)*pitch);
-    LCD_PrintString(orientation);
+    sprintf(lcd_orientation, "%d/%d", (int)*roll, (int)*pitch);
+    LCD_PrintString(lcd_orientation);
 
 }
 
@@ -81,30 +109,6 @@ void SetOffLEDs()
     LED4_Write(0);
 
 }
-
-
-
-
-    
-void MakeSound(float* roll, float* pitch)
-{
-    
-    
-    
-    
-    
-}
-
-
-
-    
-    
-
-
-
-        
-
-
 
 
 

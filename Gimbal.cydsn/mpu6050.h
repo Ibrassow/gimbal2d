@@ -88,7 +88,7 @@ void MPU6050_Start();
 uint8_t MPU6050_DataAvailable();
 
 void MPU6050_Calibrate();
-
+void GetValuesFromCalib(int32_t *calib_array);
 
 void MPU6050_ReadData();
 
@@ -97,8 +97,7 @@ void MPU6050_PrintRawData();
 void MPU6050_PrintData();
 
 
-void MPU6050_GetRoll(float* roll); 
-void MPU6050_GetPitch(float* pitch); 
+void MPU6050_GetData(float* roll, float* pitch); 
 
     
 #endif 
