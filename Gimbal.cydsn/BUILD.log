@@ -1,6 +1,28 @@
---------------- Build Started: 05/21/2022 02:05:21 Project: Gimbal, Configuration: ARM GCC 5.4-2016-q2-update Debug ---------------
+--------------- Build Started: 05/22/2022 02:08:06 Project: Gimbal, Configuration: ARM GCC 5.4-2016-q2-update Debug ---------------
 The code generation step is up to date.
+arm-none-eabi-gcc.exe -mcpu=cortex-m3 -mthumb -I. -IGenerated_Source\PSoC5 -Wa,-alh=.\CortexM3\ARM_GCC_541\Debug/main.lst -g -D DEBUG -D CY_CORE_ID=0 -Wall -ffunction-sections -ffat-lto-objects -Og -c main.c -o .\CortexM3\ARM_GCC_541\Debug\main.o
+main.c: In function 'main':
+main.c:143:34: warning: unused variable 'orientation' [-Wunused-variable]
+                             char orientation[50];
+                                  ^
 arm-none-eabi-gcc.exe -mcpu=cortex-m3 -mthumb -I. -IGenerated_Source\PSoC5 -Wa,-alh=.\CortexM3\ARM_GCC_541\Debug/mpu6050.lst -g -D DEBUG -D CY_CORE_ID=0 -Wall -ffunction-sections -ffat-lto-objects -Og -c mpu6050.c -o .\CortexM3\ARM_GCC_541\Debug\mpu6050.o
+arm-none-eabi-gcc.exe -mcpu=cortex-m3 -mthumb -I. -IGenerated_Source\PSoC5 -Wa,-alh=.\CortexM3\ARM_GCC_541\Debug/motor_control.lst -g -D DEBUG -D CY_CORE_ID=0 -Wall -ffunction-sections -ffat-lto-objects -Og -c motor_control.c -o .\CortexM3\ARM_GCC_541\Debug\motor_control.o
+motor_control.c: In function 'MPU6050_MoveServo1':
+motor_control.c:107:13: warning: unused variable 'servo_previous_cmd_1' [-Wunused-variable]
+         int servo_previous_cmd_1 = servo_cmd_1;
+             ^
+motor_control.c: In function 'MPU6050_MoveServo2':
+motor_control.c:159:13: warning: unused variable 'servo_previous_cmd_2' [-Wunused-variable]
+         int servo_previous_cmd_2 = servo_cmd_2;
+             ^
+motor_control.c: At top level:
+motor_control.c:26:21: warning: 'counter' defined but not used [-Wunused-variable]
+ static unsigned int counter = 0;
+                     ^
+motor_control.c:28:14: warning: 'elapsed_time' defined but not used [-Wunused-variable]
+ static float elapsed_time = 0;
+              ^
+arm-none-eabi-gcc.exe -mcpu=cortex-m3 -mthumb -I. -IGenerated_Source\PSoC5 -Wa,-alh=.\CortexM3\ARM_GCC_541\Debug/utilities.lst -g -D DEBUG -D CY_CORE_ID=0 -Wall -ffunction-sections -ffat-lto-objects -Og -c utilities.c -o .\CortexM3\ARM_GCC_541\Debug\utilities.o
 arm-none-eabi-ar.exe -rs .\CortexM3\ARM_GCC_541\Debug\Gimbal.a .\CortexM3\ARM_GCC_541\Debug\CyDmac.o .\CortexM3\ARM_GCC_541\Debug\CyFlash.o .\CortexM3\ARM_GCC_541\Debug\CyLib.o .\CortexM3\ARM_GCC_541\Debug\cyPm.o .\CortexM3\ARM_GCC_541\Debug\CySpc.o .\CortexM3\ARM_GCC_541\Debug\cyutils.o .\CortexM3\ARM_GCC_541\Debug\cy_em_eeprom.o .\CortexM3\ARM_GCC_541\Debug\UART.o .\CortexM3\ARM_GCC_541\Debug\UART_PM.o .\CortexM3\ARM_GCC_541\Debug\UART_INT.o .\CortexM3\ARM_GCC_541\Debug\UART_BOOT.o .\CortexM3\ARM_GCC_541\Debug\UART_IntClock.o .\CortexM3\ARM_GCC_541\Debug\I2C_MPU6050.o .\CortexM3\ARM_GCC_541\Debug\I2C_MPU6050_PM.o .\CortexM3\ARM_GCC_541\Debug\I2C_MPU6050_INT.o .\CortexM3\ARM_GCC_541\Debug\I2C_MPU6050_BOOT.o .\CortexM3\ARM_GCC_541\Debug\I2C_MPU6050_SLAVE.o .\CortexM3\ARM_GCC_541\Debug\I2C_MPU6050_MASTER.o .\CortexM3\ARM_GCC_541\Debug\Pin_SCL.o .\CortexM3\ARM_GCC_541\Debug\Pin_SDA.o .\CortexM3\ARM_GCC_541\Debug\Timer.o .\CortexM3\ARM_GCC_541\Debug\Timer_PM.o .\CortexM3\ARM_GCC_541\Debug\ISR.o .\CortexM3\ARM_GCC_541\Debug\LCD.o .\CortexM3\ARM_GCC_541\Debug\LCD_PM.o .\CortexM3\ARM_GCC_541\Debug\LCD_LCDPort.o .\CortexM3\ARM_GCC_541\Debug\Clock.o .\CortexM3\ARM_GCC_541\Debug\SmallServo.o .\CortexM3\ARM_GCC_541\Debug\LargeServo.o .\CortexM3\ARM_GCC_541\Debug\Joystick_X.o .\CortexM3\ARM_GCC_541\Debug\Joystick_Y.o .\CortexM3\ARM_GCC_541\Debug\AMux.o .\CortexM3\ARM_GCC_541\Debug\ADC.o .\CortexM3\ARM_GCC_541\Debug\ADC_PM.o .\CortexM3\ARM_GCC_541\Debug\ADC_INT.o .\CortexM3\ARM_GCC_541\Debug\ADC_AMux.o .\CortexM3\ARM_GCC_541\Debug\ADC_Ext_CP_Clk.o .\CortexM3\ARM_GCC_541\Debug\ADC_IRQ.o .\CortexM3\ARM_GCC_541\Debug\ADC_theACLK.o .\CortexM3\ARM_GCC_541\Debug\PWM.o .\CortexM3\ARM_GCC_541\Debug\PWM_PM.o .\CortexM3\ARM_GCC_541\Debug\SW1.o .\CortexM3\ARM_GCC_541\Debug\LED1.o .\CortexM3\ARM_GCC_541\Debug\LED2.o .\CortexM3\ARM_GCC_541\Debug\LED3.o .\CortexM3\ARM_GCC_541\Debug\LED4.o .\CortexM3\ARM_GCC_541\Debug\SW2.o .\CortexM3\ARM_GCC_541\Debug\ISR_Audio.o .\CortexM3\ARM_GCC_541\Debug\Timer_Audio.o .\CortexM3\ARM_GCC_541\Debug\Timer_Audio_PM.o .\CortexM3\ARM_GCC_541\Debug\Clock_Audio.o .\CortexM3\ARM_GCC_541\Debug\VDAC8.o .\CortexM3\ARM_GCC_541\Debug\VDAC8_PM.o .\CortexM3\ARM_GCC_541\Debug\Audio_Out.o .\CortexM3\ARM_GCC_541\Debug\CyBootAsmGnu.o
 arm-none-eabi-ar.exe: creating .\CortexM3\ARM_GCC_541\Debug\Gimbal.a
 arm-none-eabi-gcc.exe -Wl,--start-group -o C:\dev\gimbal2d\Gimbal.cydsn\CortexM3\ARM_GCC_541\Debug\Gimbal.elf .\CortexM3\ARM_GCC_541\Debug\main.o .\CortexM3\ARM_GCC_541\Debug\mpu6050.o .\CortexM3\ARM_GCC_541\Debug\motor_control.o .\CortexM3\ARM_GCC_541\Debug\utilities.o .\CortexM3\ARM_GCC_541\Debug\keypad.o .\CortexM3\ARM_GCC_541\Debug\cyfitter_cfg.o .\CortexM3\ARM_GCC_541\Debug\cymetadata.o .\CortexM3\ARM_GCC_541\Debug\Cm3Start.o .\CortexM3\ARM_GCC_541\Debug\Gimbal.a "C:\Program Files (x86)\Cypress\PSoC Creator\4.4\PSoC Creator\psoc\content\cycomponentlibrary\CyComponentLibrary.cylib\CortexM3\ARM_GCC_541\Debug\CyComponentLibrary.a" -mcpu=cortex-m3 -mthumb -l m -L Generated_Source\PSoC5 -Wl,-Map,.\CortexM3\ARM_GCC_541\Debug/Gimbal.map -T Generated_Source\PSoC5\cm3gcc.ld -specs=nano.specs -Wl,--gc-sections -g -ffunction-sections -Og -ffat-lto-objects -Wl,--end-group
@@ -11,4 +33,4 @@ Checksum calculated and stored in ELF section .cymeta
 cyelftool.exe -S C:\dev\gimbal2d\Gimbal.cydsn\CortexM3\ARM_GCC_541\Debug\Gimbal.elf
 Flash used: 22208 of 262144 bytes (8,5%).
 SRAM used: 7001 of 65536 bytes (10,7%). Stack: 2048 bytes. Heap: 128 bytes.
---------------- Build Succeeded: 05/21/2022 02:05:22 ---------------
+--------------- Build Succeeded: 05/22/2022 02:08:08 ---------------

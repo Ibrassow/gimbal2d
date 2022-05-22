@@ -16,7 +16,7 @@ uint8_t sw1;
 uint8_t sw2;
 uint8_t mode = 0;  
 uint8_t just_switched = 0;
-
+int ii = 0;
 
 
 
@@ -54,71 +54,6 @@ int main(void)
     LCD_ClearDisplay();
     
 
-    int ii = 0;
-    
-    
-    // RE-CALIBRATION -----
-    
-    /*int32_t calib_array[6] = {0};
-    
-    int32_t ax_offs;
-    int32_t ay_offs;
-    int32_t az_offs;
-    int32_t gx_offs;
-    int32_t gy_offs;
-    int32_t gz_offs;
-    
-    int32_t N = 20;
-
-    for (int i = 0; i < N; i++)
-    {
-        
-        MPU6050_Calibrate();
-        
-        GetValuesFromCalib(calib_array);
-        
-        ax_offs = ax_offs + calib_array[0];
-        ay_offs = ay_offs + calib_array[1];
-        az_offs = az_offs + calib_array[2];
-        gx_offs = gx_offs + calib_array[3];
-        gy_offs = gy_offs + calib_array[4];
-        gz_offs = gz_offs + calib_array[5];
-        
-        CyDelay(1000);
-        
-    }
-
-        ax_offs = round((float)ax_offs/(float)N);
-        ay_offs = round((float)ay_offs/(float)N);
-        az_offs = round((float)az_offs/(float)N);
-        gx_offs = round((float)gx_offs/(float)N);
-        gy_offs = round((float)gy_offs/(float)N);
-        gz_offs = round((float)gz_offs/(float)N);
-    
-    
-        char test[50];
-        sprintf(test, "FINAL AX OFFSET :: %d \n", ax_offs);
-        UART_PutString(test) ;
-        
-        sprintf(test, "FINAL AY OFFSET :: %d\n",  ay_offs);
-        UART_PutString(test) ;
-        
-        sprintf(test, "FINAL AZ OFFSET :: %d\n",  az_offs);
-        UART_PutString(test) ;
-        
-        sprintf(test, "FINAL GX OFFSET :: %d\n", gx_offs);
-        UART_PutString(test) ;
-        
-        sprintf(test, "FINAL GY OFFSET :: %d\n", gy_offs);
-        UART_PutString(test) ;
-        
-        sprintf(test, "FINAL GZ OFFSET :: %d\n", gz_offs);
-        UART_PutString(test) ;
-
-           CyDelay(100000);*/
-    
-    // RE-CALIBRATION ----- END
-    
 
     
     for(;;)
@@ -226,7 +161,67 @@ int main(void)
 }
 
 
+// RE-CALIBRATION -----
+    
+    /*int32_t calib_array[6] = {0};
+    
+    int32_t ax_offs;
+    int32_t ay_offs;
+    int32_t az_offs;
+    int32_t gx_offs;
+    int32_t gy_offs;
+    int32_t gz_offs;
+    
+    int32_t N = 20;
 
+    for (int i = 0; i < N; i++)
+    {
+        
+        MPU6050_Calibrate();
+        
+        GetValuesFromCalib(calib_array);
+        
+        ax_offs = ax_offs + calib_array[0];
+        ay_offs = ay_offs + calib_array[1];
+        az_offs = az_offs + calib_array[2];
+        gx_offs = gx_offs + calib_array[3];
+        gy_offs = gy_offs + calib_array[4];
+        gz_offs = gz_offs + calib_array[5];
+        
+        CyDelay(1000);
+        
+    }
+
+        ax_offs = round((float)ax_offs/(float)N);
+        ay_offs = round((float)ay_offs/(float)N);
+        az_offs = round((float)az_offs/(float)N);
+        gx_offs = round((float)gx_offs/(float)N);
+        gy_offs = round((float)gy_offs/(float)N);
+        gz_offs = round((float)gz_offs/(float)N);
+    
+    
+        char test[50];
+        sprintf(test, "FINAL AX OFFSET :: %d \n", ax_offs);
+        UART_PutString(test) ;
+        
+        sprintf(test, "FINAL AY OFFSET :: %d\n",  ay_offs);
+        UART_PutString(test) ;
+        
+        sprintf(test, "FINAL AZ OFFSET :: %d\n",  az_offs);
+        UART_PutString(test) ;
+        
+        sprintf(test, "FINAL GX OFFSET :: %d\n", gx_offs);
+        UART_PutString(test) ;
+        
+        sprintf(test, "FINAL GY OFFSET :: %d\n", gy_offs);
+        UART_PutString(test) ;
+        
+        sprintf(test, "FINAL GZ OFFSET :: %d\n", gz_offs);
+        UART_PutString(test) ;
+
+           CyDelay(100000);*/
+    
+    // RE-CALIBRATION ----- END
 
 
 
